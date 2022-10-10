@@ -11,22 +11,37 @@
     * {
         font-family: Arial, Helvetica, sans-serif;
         text-align: center;
+        /* border: red 1px solid */
     }
     .container1 {
         width: 50%;
         display: flex;
         justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .smaller {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: row;
     }
 </style>
 <body>
-    <h1>Saving vs Investing</h1>
+    <h1>Saving vs Investing Graph</h1>
     <div class="container">
-        <canvas id="myChart"></canvas>
+      <canvas id="myChart"></canvas>
     </div>
-    <h1>Expense Breakdown</h1>
-    <div class="container1">
+    <div class="smaller">
+      <div class="container1">
+        <h1>Expense Breakdown</h1>
         <canvas id="donughtChart"></canvas>
-    </div>      
+      </div>      
+      <div class="container1">
+        <h1>Saving vs Investing</h1>
+        <canvas id="barChart"></canvas>
+      </div>      
+    </div>
 </body>
 <script>
   weeksToSimulate = 52;
@@ -114,6 +129,33 @@ const donughConfig = {
 const donughtChart = new Chart(
     document.getElementById('donughtChart'),
     donughConfig
-  );
+);
+  
+const barData = {
+  labels: ["Saving"],
+  datasets: [{
+    label: 'Saving',
+    data: lastSavings,
+    backgroundColor:'rgb(99, 112, 255)',
+  },
+  {
+    label: 'Investing',
+    data: lastInvestings,
+    backgroundColor:'rgb(255, 99, 132)'
+  }
+]
+};
+
+const barConfig = {
+  type: 'bar',
+  data: barData,
+  options: {}
+};
+
+const barChart = new Chart(
+    document.getElementById('barChart'),
+    barConfig
+);
+  
 </script>
 </html>
