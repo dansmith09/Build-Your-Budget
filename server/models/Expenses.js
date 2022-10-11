@@ -12,3 +12,6 @@ const expensesSchema = new Schema({
 });
 
 module.exports = expensesSchema;
+
+
+
