@@ -35,7 +35,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addExpense(userId: ID!, expense: ExpenseData): User
     removeUser: User
-    removeExpense(name: String!): User
+    removeExpense(expense: ExpenseData!): User
     
   }
 `;
