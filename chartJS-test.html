@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Chart JS Practice</title>
+</head>
+<style>
+    * {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        /* border: red 1px solid */
+    }
+    .container1 {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .smaller {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: row;
+    }
+</style>
+<body>
+    <h1>Saving vs Investing Graph</h1>
+    <div class="container">
+      <canvas id="myChart"></canvas>
+    </div>
+    <div class="smaller">
+      <div class="container1">
+        <h1>Expense Breakdown</h1>
+        <canvas id="donughtChart"></canvas>
+      </div>      
+      <div class="container1">
+        <h1>Saving vs Investing</h1>
+        <canvas id="barChart"></canvas>
+      </div>      
+    </div>
+</body>
+<script>
+  weeksToSimulate = 52;
+  savingsPerWeek = 370;
+  marketReturnPerYear = 0.066; // 6.6%
+
+  let weekLabelsArray = ['Week 0'];
+    for (let index = 0; index < weeksToSimulate; index++) {
+        const weekString = 'Week ' + (index + 1)
+        weekLabelsArray.push(weekString);
+    }
+  const labels = weekLabelsArray;
+
+  let savingData = [0];
+    for (let index = 0; index < weeksToSimulate; index++) {
+        const dataPoint = (index + 1) * savingsPerWeek;
+        savingData.push(dataPoint);
+    }
+
+    let investingData = [0];
+    for (let index = 0; index < weeksToSimulate; index++) {
+        const weeklyMarketReturn = marketReturnPerYear/52;
+        const totalInvested = (index+1) * savingsPerWeek
+        const marketReturn = weeklyMarketReturn * (index+1) * totalInvested;
+        const dataPoint = totalInvested + marketReturn;
+        investingData.push(dataPoint);
+    }
+
+    const lastSavings = [savingData[savingData.length-1]]
+    console.log('lastSavings',lastSavings)
+    const lastInvestings = [investingData[investingData.length-1]]
+    console.log('lastInvestings',lastSavings)
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'Saving',
+      backgroundColor: 'rgb(99, 112, 255)',
+      borderColor: 'rgb(99, 112, 255)',
+      data: savingData,
+    },
+    {
+      label: 'Investing',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: investingData,
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+
+  // Donught Chart
+  const donughtData = {
+  labels: [
+    'Rent',
+    'Groceries',
+    'Petrol',
+    'Gym'
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [500, 150, 100, 70],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)',
+      'rgb(99, 112, 255)'
+    ],
+    hoverOffset: 4
+  }]
+};
+const donughConfig = {
+  type: 'doughnut',
+  data: donughtData,
+};
+
+const donughtChart = new Chart(
+    document.getElementById('donughtChart'),
+    donughConfig
+);
+  
+const barData = {
+  labels: ["Saving"],
+  datasets: [{
+    label: 'Saving',
+    data: lastSavings,
+    backgroundColor:'rgb(99, 112, 255)',
+  },
+  {
+    label: 'Investing',
+    data: lastInvestings,
+    backgroundColor:'rgb(255, 99, 132)'
+  }
+]
+};
+
+const barConfig = {
+  type: 'bar',
+  data: barData,
+  options: {}
+};
+
+const barChart = new Chart(
+    document.getElementById('barChart'),
+    barConfig
+);
+  
+</script>
+</html>
