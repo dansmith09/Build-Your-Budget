@@ -6,7 +6,7 @@ const expensesSchema = new Schema({
     required: true,
   },
   expense: {
-    type: Int,
+    type: Number,
     required: true,
   },
 });
