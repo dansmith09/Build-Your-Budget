@@ -11,12 +11,17 @@ const typeDefs = gql`
 
   type Expense {
     name: String!
-    expense: Int!
+    cost: Int!
   }
 
   type Auth {
     token: ID!
     user: User
+  }
+
+  input ExpenseData {
+    name: String!
+    cost: Int!
   }
 
   type Query {
@@ -28,7 +33,7 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addExpense(userId: ID!, name: String!, expense: Int!): User
+    addExpense(userId: ID!, expense: ExpenseData): User
     removeUser: User
     removeExpense(name: String!): User
     

@@ -45,7 +45,7 @@ const resolvers = {
 
     addExpense: async (parent, { userId, expense }, context) => {
       if (context.user) {
-        return User.findOneAndUpdate(
+        const updatedUser = await User.findOneAndUpdate(
           { _id: userId },
           {
             $addToSet: { expenses: expense },
@@ -55,6 +55,7 @@ const resolvers = {
             runValidators: true,
           }
         );
+        return updatedUser
       }
       throw new AuthenticationError('You need to be logged in!');
     },
