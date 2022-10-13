@@ -42,12 +42,12 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addExpense: async (parent, { userId, expense }, context) => {
+    addExpense: async (parent, { userId, expenseData }, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: userId },
           {
-            $addToSet: { expenses: expense },
+            $addToSet: { expenses: expenseData },
           },
           {
             new: true,
@@ -58,30 +58,29 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    updateExpense: async (parent, { id, expense, newExpense }, context) => {
+    updateExpense: async (parent, { userId, expenseId, newExpenseData }, context) => {
       if (context.user) {
         return await User.findOneAndUpdate(
           {
-            _id: id,
-            "expenses.name": expense.name,
-            "expenses.cost": expense.cost
+            _id: userId,
+            "expenses._id": expenseId
           },
           {
             $set: {
-              "expenses.$.name" : newExpense.name,
-              "expenses.$.cost" : newExpense.cost,
+              "expenses.$.name" : newExpenseData.name,
+              "expenses.$.cost" : newExpenseData.cost,
             }
           },
           {new: true});
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addIncome: async (parent, { userId, income }, context) => {
+    addIncome: async (parent, { userId, incomeData }, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: userId },
           {
-            $addToSet: { incomes: income },
+            $addToSet: { incomes: incomeData },
           },
           {
             new: true,
@@ -92,18 +91,17 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    updateIncome: async (parent, { id, income, newIncome }, context) => {
+    updateIncome: async (parent, { userId, incomeId, newIncomeData }, context) => {
       if (context.user) {
         return await User.findOneAndUpdate(
           {
-            _id: id,
-            "incomes.name": income.name,
-            "incomes.amount": income.amount
+            _id: userId,
+            "incomes._id": incomeId
           },
           {
             $set: {
-              "incomes.$.name" : newIncome.name,
-              "incomes.$.amount" : newIncome.amount,
+              "incomes.$.name" : newIncomeData.name,
+              "incomes.$.amount" : newIncomeData.amount,
             }
           },
           {new: true});

@@ -1,6 +1,6 @@
 const { Schema } = require('mongoose');
 
-const incomeSchema = new Schema({
+const incomesSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -11,7 +11,7 @@ const incomeSchema = new Schema({
   },
 });
 
-module.exports = incomeSchema;
+module.exports = incomesSchema;
 
 
 
