@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap');
 
+/* /////////////////////////////////////////////////////////////// */
+/* ////////////////////////// ROOT STYLING ////////////////////// */
+/* ///////////////////////////////////////////////////////////// */
+
 :root {
   --main-color: #170826;
   --main-text: #FFF;
@@ -12,7 +16,9 @@
 body {
   background-color: var(--main-color)
 }
-
+/* /////////////////////////////////////////////////////////////// */
+/* ////////////////////////// NAV STYLING /////////////////////// */
+/* ///////////////////////////////////////////////////////////// */
 .navbar {
   display: flex;
   flex-direction: row;
@@ -37,6 +43,49 @@ body {
   color: var(--active-text);
   font-family: 'Exo 2', sans-serif;
   padding: 20px;
+}
+
+/* /////////////////////////////////////////////////////////////// */
+/* ////////////////////////// HOME STYLING ////////////////////// */
+/* ///////////////////////////////////////////////////////////// */
+
+.home-header-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-top: 100px;
+  color: var(--main-text);
+  font-family: 'Exo 2', sans-serif;
+}
+
+/* /////////////////////////////////////////////////////////////// */
+/* ////////////////////////// DASH STYLING ////////////////////// */
+/* ///////////////////////////////////////////////////////////// */
+.dash-header-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-top: 100px;
+  color: var(--main-text);
+  font-family: 'Exo 2', sans-serif;
+}
+
+/* /////////////////////////////////////////////////////////////// */
+/* ////////////////////////// DONATE STYLING //////////////////// */
+/* ///////////////////////////////////////////////////////////// */
+.donate-header-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-top: 100px;
+  color: var(--main-text);
+  font-family: 'Exo 2', sans-serif;
 }
 
 code {
