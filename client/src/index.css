@@ -1,10 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap');
+
+:root {
+  --main-color: #170826;
+  --main-text: #FFF;
+  /* --med-text:
+  --sub-text: */
+  --active-text: green;
+}
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--main-color)
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0;
+  margin-top: 30px;
+  margin-bottom: 30px
+}
+.navbar-items {
+  list-style: none;
+  text-decoration: none;
+  justify-content: space-around;
+}
+.navTab {
+  color: var(--main-text);
+  text-decoration: none;
+  font-family: 'Exo 2', sans-serif;
+  padding: 20px;
+}
+.active-navTab {
+  text-decoration: none;
+  color: var(--active-text);
+  font-family: 'Exo 2', sans-serif;
+  padding: 20px;
 }
 
 code {

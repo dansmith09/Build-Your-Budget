@@ -2,17 +2,17 @@ import React from 'react';
 
 function NavTabs({ currentPage, handlePageChange}) {
     return(
-        <ul>
-            <li>
+        <ul className='navbar'>
+            <li className='navbar-items'>
                 <a
                 href="#home"
                 onClick={() => handlePageChange('Home')}
                 className={currentPage === 'Home' ? 'active-navTab' : 'navTab'}
                 >
-                    Home
+                    home
                 </a>
             </li>
-            <li>
+            <li className='navbar-items'>
                 <a
                 href="#home"
                 onClick={() => handlePageChange('Dashboard')}
@@ -21,7 +21,7 @@ function NavTabs({ currentPage, handlePageChange}) {
                     dashboard
                 </a>
             </li>
-            <li>
+            <li className='navbar-items'>
                 <a
                 href="#home"
                 onClick={() => handlePageChange('Donate')}
@@ -29,7 +29,7 @@ function NavTabs({ currentPage, handlePageChange}) {
                 >
                     donate
                 </a>
-            </li>
+            </li >
             {/* Login isnt working yet */}
             {/* <li>
                 <a
