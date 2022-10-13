@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+const { User, expenseSchema,  } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -42,7 +42,6 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-
     addExpense: async (parent, { userId, expense }, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
@@ -59,17 +58,79 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    updateExpense: async (parent, { id, expense, newExpense }, context) => {
+      if (context.user) {
+        return await User.findOneAndUpdate(
+          {
+            _id: id,
+            "expenses.name": expense.name,
+            "expenses.cost": expense.cost
+          },
+          {
+            $set: {
+              "expenses.$.name" : newExpense.name,
+              "expenses.$.cost" : newExpense.cost,
+            }
+          },
+          {new: true});
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    addIncome: async (parent, { userId, income }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: userId },
+          {
+            $addToSet: { incomes: income },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+        return updatedUser
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    updateIncome: async (parent, { id, income, newIncome }, context) => {
+      if (context.user) {
+        return await User.findOneAndUpdate(
+          {
+            _id: id,
+            "incomes.name": income.name,
+            "incomes.amount": income.amount
+          },
+          {
+            $set: {
+              "incomes.$.name" : newIncome.name,
+              "incomes.$.amount" : newIncome.amount,
+            }
+          },
+          {new: true});
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
     removeUser: async (parent, args, context) => {
       if (context.user) {
         return User.findOneAndDelete({ _id: context.user._id });
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    removeExpense: async (parent, { expense }, context) => {
+    removeExpense: async (parent, { expense }, context) => { // Works
       if (context.user) {
         return User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { expenses: expense } },// I think we might need to parse in an entire object as a User's expenses is an array of Objects but we will see
+          { $pull: { expenses: expense } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    removeIncome: async (parent, { income }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { incomes: income } },
           { new: true }
         );
       }
