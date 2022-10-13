@@ -2,6 +2,7 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const expensesSchema = require('./Expenses');
+const incomesSchema = require('./Incomes');
 
 const userSchema = new Schema(
   {
@@ -20,6 +21,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    incomes: [incomesSchema],
     expenses: [expensesSchema],
   },
   {
@@ -43,12 +45,14 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-// when user is queried, we get number of saved expenses
-  // useful for when deleting an expense? -- use removeExpense with expenseCount
-userSchema.virtual('expenseCount').get(function() {
-  return this.expenseCount.length;
-})
+userSchema.virtual('totalIncomes').get(function () {
+  return this.incomes.reduce((accumulatedIncomes, currentObj) => accumulatedIncomes + currentObj.amount,0)
+}); 
 
+
+userSchema.virtual('totalExpenses').get(function () {
+  return this.expenses.reduce((accumulatedExpenses, currentObj) => accumulatedExpenses + currentObj.cost,0)
+}); 
 
 const User = model('User', userSchema);
 
