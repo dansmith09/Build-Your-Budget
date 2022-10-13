@@ -8,7 +8,7 @@ const typeDefs = gql`
     password: String!
     incomes: [Income]
     expenses: [Expense]
-    totalIncome: Int
+    totalIncomes: Int
     totalExpenses: Int
   }
 

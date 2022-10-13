@@ -45,6 +45,15 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
+userSchema.virtual('totalIncomes').get(function () {
+  return this.incomes.reduce((accumulatedIncomes, currentObj) => accumulatedIncomes + currentObj.amount,0)
+}); 
+
+
+userSchema.virtual('totalExpenses').get(function () {
+  return this.expenses.reduce((accumulatedExpenses, currentObj) => accumulatedExpenses + currentObj.cost,0)
+}); 
+
 const User = model('User', userSchema);
 
 module.exports = User;
