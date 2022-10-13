@@ -3,6 +3,7 @@ import NavTabs from './Navbar';
 import Home from './pages/Home'
 import Dashboard from './pages/Dashboard';
 import Donate from './pages/Donate'
+import Login from './pages/Login.js';
 
 
 export default function BudgetContainer() {

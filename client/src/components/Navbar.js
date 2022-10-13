@@ -1,47 +1,62 @@
 import React from 'react';
+import Auth from '../utils/auth';
+import { Link } from 'react-router-dom';
 
-function NavTabs({ currentPage, handlePageChange}) {
-    return(
-        <ul className='navbar'>
-            <li className='navbar-items'>
-                <a
-                href="#home"
-                onClick={() => handlePageChange('Home')}
-                className={currentPage === 'Home' ? 'active-navTab' : 'navTab'}
-                >
-                    home
-                </a>
-            </li>
-            <li className='navbar-items'>
-                <a
-                href="#home"
-                onClick={() => handlePageChange('Dashboard')}
-                className={currentPage === 'Dashboard' ? 'active-navTab' : 'navTab'}
-                >
-                    dashboard
-                </a>
-            </li>
-            <li className='navbar-items'>
-                <a
-                href="#home"
-                onClick={() => handlePageChange('Donate')}
-                className={currentPage === 'Donate' ? 'active-navTab' : 'navTab'}
-                >
-                    donate
-                </a>
-            </li >
-            {/* Login isnt working yet */}
-            {/* <li>
-                <a
-                href="#home"
-                onClick={() => handlePageChange('Login')}
-                className={currentPage === 'Login' ? 'active-navTab' : 'navTab'}
-                >
-                    login
-                </a>
-            </li> */}
-        </ul>
-    )
+function NavTabs() {
+
+    function showNavigation() {
+        if (Auth.loggedIn()) {
+            return (
+                <ul className='navbar'>
+                    <li className='navbar-items'>
+                        <Link to="/">
+                            Home
+                        </Link>
+                    </li>
+                    <li className='navbar-items'>
+                        <Link to="/dashboard">
+                            dashboard
+                        </Link>
+                    </li>
+                    <li className='navbar-items'>
+                        <Link to="/donate">
+                            donate
+                        </Link>
+                    </li >
+                        <a href="/" onClick={() => Auth.logout()}>
+                            logout
+                        </a>
+                    <li className='navbar-items'>
+                        
+                    </li>
+                </ul>
+            )
+        } else {
+            return (
+                <ul className="navbar">
+                    <li className="navbar-items">
+                    <Link to="/signup">
+                        signup
+                    </Link>
+                    </li>
+                    <li className="navbar">
+                    <Link to="navbar-items">
+                        login
+                    </Link>
+                    </li>
+                </ul> 
+            )
+        }
+    }
+
+    return (
+        <nav>
+            {showNavigation()}
+        </nav>
+
+    );
 }
+
+
 
 export default NavTabs;
