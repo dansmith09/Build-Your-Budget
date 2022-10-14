@@ -14,7 +14,7 @@ function NavTabs() {
                     <li className='navbar-items'>
                         <Link
                         className={({ isActive }) => (isActive ? 'active-navTab' : 'navTab')}
-                        to="/">
+                        to="/home">
                             Home
                         </Link>
                     </li>

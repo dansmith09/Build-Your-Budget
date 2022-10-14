@@ -31,8 +31,8 @@ function Login(props) {
     };
 
     return (
-      <div className="login-container">
-        <div className='login-header'>
+      <div className="form-container">
+        <div className='form-header'>
           <h2>Login</h2>
         </div>
         <form onSubmit={handleFormSubmit}>
@@ -52,7 +52,7 @@ function Login(props) {
                 placeholder="password"
                 name="password"
                 type="password"
-                id="pwd"
+                id="password"
                 onChange={handleChange}
               />
             </div>
@@ -61,7 +61,7 @@ function Login(props) {
               <p className="error-text">Incorrect credentials</p>
             </div>
           ) : null}
-            <div className="login-button">
+            <div className="form-button">
               <button type="submit">Login</button>
             </div>
         </form>

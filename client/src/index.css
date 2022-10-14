@@ -90,11 +90,11 @@ body {
 /* /////////////////////////////////////////////////////////////// */
 /* ////////////////////////// LOGIN STYLING ///////////////////// */
 /* ///////////////////////////////////////////////////////////// */
-.login-header {
+.form-header {
   display: flex;
   justify-content: center;
 }
-.login-container {
+.form-container {
   margin-top: 30vh;
   font-family: 'Exo 2', sans-serif;
   color: var(--main-text);
@@ -110,7 +110,7 @@ body {
   padding-bottom: 20px;
 }
 
-.login-button {
+.form-button {
   display: flex;
   justify-content: center;
 }
@@ -119,6 +119,7 @@ button {
   border: 1px solid green;
   background: var(--main-color);
   color: var(--main-text);
+  cursor: pointer;
 }
 
 

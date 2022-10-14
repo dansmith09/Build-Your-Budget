@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../../utils/auth';
 import { ADD_USER } from '../../utils/mutations';
@@ -31,53 +30,43 @@ function Signup(props) {
     };
 
     return (
-        <div className="signup-container">
-        <Link to="/login">← Go to Login</Link>
-  
-        <h2>Signup</h2>
+      <div className="form-container">
+        <div className='form-header'>
+          <h2>Signup</h2>
+        </div>
         <form onSubmit={handleFormSubmit}>
-          <div className="flex-row space-between my-2">
-            <label htmlFor="firstName">First Name:</label>
+          <div className="form-group">
+            <label htmlFor="username"></label>
             <input
-              placeholder="First"
-              name="firstName"
-              type="firstName"
-              id="firstName"
+              placeholder="username"
+              name="username"
+              type="username"
+              id="username"
               onChange={handleChange}
             />
           </div>
-          <div className="flex-row space-between my-2">
-            <label htmlFor="lastName">Last Name:</label>
+          <div className="form-group">
+            <label htmlFor="email"></label>
             <input
-              placeholder="Last"
-              name="lastName"
-              type="lastName"
-              id="lastName"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="flex-row space-between my-2">
-            <label htmlFor="email">Email:</label>
-            <input
-              placeholder="youremail@test.com"
+              placeholder="@"
               name="email"
               type="email"
               id="email"
               onChange={handleChange}
             />
           </div>
-          <div className="flex-row space-between my-2">
-            <label htmlFor="pwd">Password:</label>
+          <div className="form-group">
+            <label htmlFor="pwd"></label>
             <input
-              placeholder="******"
+              placeholder="password"
               name="password"
               type="password"
-              id="pwd"
+              id="password"
               onChange={handleChange}
             />
           </div>
-          <div className="flex-row flex-end">
-            <button type="submit">Submit</button>
+          <div className="form-button">
+            <button type="submit">Signup</button>
           </div>
         </form>
       </div>
