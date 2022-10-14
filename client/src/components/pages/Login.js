@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
-import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
 
@@ -32,41 +31,41 @@ function Login(props) {
     };
 
     return (
-        <div className="container my-1">
-      <Link to="/signup">← Go to Signup</Link>
-
-      <h2>Login</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="email">Email address:</label>
-          <input
-            placeholder="youremail@test.com"
-            name="email"
-            type="email"
-            id="email"
-            onChange={handleChange}
-          />
+      <div className="login-container">
+        <div className='login-header'>
+          <h2>Login</h2>
         </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">Password:</label>
-          <input
-            placeholder="******"
-            name="password"
-            type="password"
-            id="pwd"
-            onChange={handleChange}
-          />
-        </div>
-        {error ? (
-          <div>
-            <p className="error-text">The provided credentials are incorrect</p>
+        <form onSubmit={handleFormSubmit}>
+          <div className="form-group">
+            <label className='input-field' htmlFor="email"></label>
+            <input
+              placeholder="email"
+              name="email"
+              type="email"
+              id="email"
+              onChange={handleChange}
+            />
           </div>
-        ) : null}
-        <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
-    </div>
+            <div className="form-group">
+              <label className='input-field' htmlFor="pwd"></label>
+              <input
+                placeholder="password"
+                name="password"
+                type="password"
+                id="pwd"
+                onChange={handleChange}
+              />
+            </div>
+          {error ? (
+            <div>
+              <p className="error-text">Incorrect credentials</p>
+            </div>
+          ) : null}
+            <div className="login-button">
+              <button type="submit">Login</button>
+            </div>
+        </form>
+      </div>
     )
 
 

@@ -87,6 +87,45 @@ body {
   color: var(--main-text);
   font-family: 'Exo 2', sans-serif;
 }
+/* /////////////////////////////////////////////////////////////// */
+/* ////////////////////////// LOGIN STYLING ///////////////////// */
+/* ///////////////////////////////////////////////////////////// */
+.login-header {
+  display: flex;
+  justify-content: center;
+}
+.login-container {
+  margin-top: 30vh;
+  font-family: 'Exo 2', sans-serif;
+  color: var(--main-text);
+}
+.form-group {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px
+}
+.error-text {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.login-button {
+  display: flex;
+  justify-content: center;
+}
+button {
+  width: 100px;
+  border: 1px solid green;
+  background: var(--main-color);
+  color: var(--main-text);
+}
+
+
+
+/* /////////////////////////////////////////////////////////////// */
+/* ////////////////////////// SIGNUP STYLING //////////////////// */
+/* ///////////////////////////////////////////////////////////// */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
