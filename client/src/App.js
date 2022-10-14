@@ -42,33 +42,18 @@ function App() {
         <ApolloProvider client={client}>
             <Router >
                 <div>
-                    <NavTabs />
+                  <NavTabs/>
                     <Routes>
-                        <Route
-                        path="/"
-                        element={<Home />}
-                        />
-                        <Route
-                        path="/dashboard"
-                        element={<Dashboard />}
-                        />
-                        <Route
-                        path="/donate"
-                        element={<Donate />}
-                        />
-                        <Route
-                        path="/login"
-                        element={<Login />}
-                        />
-                        <Route
-                        path="/signup"
-                        element={<Signup />}
-                        />
+                        <Route path="/home" element={<Home />}/>
+                        <Route path="/dashboard" element={<Dashboard />}/>
+                        <Route path="/donate" element={<Donate />}/>
+                        <Route path="/login" element={<Login />}/>
+                        <Route path="/signup" element={<Signup />}/>
                     </Routes>
                 </div>
             </Router>
         </ApolloProvider>
-    )
+    );
 }
 
 export default App;
