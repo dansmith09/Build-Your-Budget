@@ -39,7 +39,7 @@ mutation addExpense($expenseId: ID!, $expense: String!) {
 `;
     // TODO: Check line464 - expenses or expense?
 export const REMOVE_EXPENSE = gql `
-    mutation removeExpense($expense = String!) {
+    mutation removeExpense($expense: String!) {
         removeExpense(expense: $expense) {
             _id
             name

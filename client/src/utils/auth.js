@@ -24,7 +24,7 @@ class AuthService {
 
     getToken() {
         // Grab user data from LS
-        return localStorage.get('id_token')
+        return localStorage.getItem('id_token')
     }
 
     login(idToken) {

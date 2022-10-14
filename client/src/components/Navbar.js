@@ -1,6 +1,9 @@
 import React from 'react';
 import Auth from '../utils/auth';
-import { Link } from 'react-router-dom';
+// In order to use conditional styling (active/hover), we need to use NavLink. ( React Router v4)
+import { NavLink as Link } from 'react-router-dom'
+
+
 
 function NavTabs() {
 
@@ -9,51 +12,69 @@ function NavTabs() {
             return (
                 <ul className='navbar'>
                     <li className='navbar-items'>
-                        <Link to="/">
+                        <Link
+                        className={({ isActive }) => (isActive ? 'active-navTab' : 'navTab')}
+                        to="/">
                             Home
                         </Link>
                     </li>
                     <li className='navbar-items'>
-                        <Link to="/dashboard">
+                        <Link
+                        className={({ isActive }) => (isActive ? 'active-navTab' : 'navTab')}
+                        to="/dashboard">
                             dashboard
                         </Link>
                     </li>
                     <li className='navbar-items'>
-                        <Link to="/donate">
+                        <Link
+                        className={({ isActive }) => (isActive ? 'active-navTab' : 'navTab')} 
+                        to="/donate">
                             donate
                         </Link>
                     </li >
+                    <li className='navbar-items'>
                         <a href="/" onClick={() => Auth.logout()}>
                             logout
                         </a>
-                    <li className='navbar-items'>
-                        
-                    </li>
+                    </li>   
                 </ul>
             )
         } else {
             return (
                 <ul className="navbar">
                     <li className="navbar-items">
-                    <Link to="/signup">
-                        signup
-                    </Link>
+                        <Link
+                        className={({ isActive }) => (isActive ? 'active-navTab' : 'navTab')}
+                        to="/home">
+                            home
+                        </Link>
                     </li>
-                    <li className="navbar">
-                    <Link to="navbar-items">
-                        login
-                    </Link>
+                    <li className="navbar-items">
+                        <Link
+                        className={({ isActive }) => (isActive ? 'active-navTab' : 'navTab')}
+                        to="/signup">
+                            signup
+                        </Link>
+                    </li>
+                    <li className="navbar-items">
+                        <Link
+                        className={({ isActive }) => (isActive ? 'active-navTab' : 'navTab')}
+                        to="/login">
+                            login
+                        </Link>
                     </li>
                 </ul> 
             )
         }
-    }
-
+    };
     return (
-        <nav>
-            {showNavigation()}
-        </nav>
-
+        <div>
+            <header>
+                <nav>
+                {showNavigation()}
+                </nav>
+            </header>
+        </div>
     );
 }
 
