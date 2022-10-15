@@ -1,64 +1,235 @@
 import { gql } from '@apollo/client';
 
-export const LOGIN_USER = gql `
-    mutation login($email: String!, $password: String!) {
-        login(email: $email, password: $password) {
-            token
-            user {
-                _id
-                username
-            }
-        }
-    }
+// Takes:
+// {
+//     username: String,
+//     email: String,
+//     password: String
+// }
 
-`;
-
-
+// TODO: This returns a 'must have privatekey or secret' error although it does add a new user
 export const ADD_USER = gql `
-    mutation addUser($username: String!, $email: String!, $password: String!) {
+    mutation Mutation($username: String!, $email: String!, $password: String!) {
         addUser(username: $username, email: $email, password: $password) {
             token
             user {
                 _id
                 username
+                email
+                incomes {
+                    _id
+                    name
+                    amount
+                }
+                expenses {
+                    _id
+                    name
+                    cost
+                }
+                totalIncomes
+                totalExpenses
             }
         }
     }
 `;
-    // TODO: Check line 34 - expenses or expense?
-    //       Are we using saveExpenseInput in typeDefs?
-export const ADD_EXPENSE = gql `
-mutation addExpense($expenseId: ID!, $expense: String!) {
-    addExpense(expenseId: $expenseId, expense: $expense) {
-        _id
-        name
-        expense 
+
+// Takes:
+// {
+//     email: String,
+//     password: String
+// }
+export const LOGIN_USER = gql `
+    mutation Mutation($email: String!, $password: String!) {
+        login(email: $email, password: $password) {
+            token
+            user {
+                _id
+                username
+                email
+                incomes {
+                    _id
+                    name
+                    amount
+                }
+                expenses {
+                    _id
+                    name
+                    cost
+                }
+                totalIncomes
+                totalExpenses
+            }
+        }
     }
-}
 
 `;
-    // TODO: Check line464 - expenses or expense?
-export const REMOVE_EXPENSE = gql `
-    mutation removeExpense($expense: String!) {
-        removeExpense(expense: $expense) {
+
+// Takes: 
+// {
+//     userId: ID,
+//     incomeData: {
+//       name: String,
+//       amount: Int
+//     }
+// }
+export const ADD_INCOME = gql `
+    mutation AddIncome($userId: ID!, $incomeData: IncomeInput) {
+        addIncome(userId: $userId, incomeData: $incomeData) {
             _id
-            name
-            expense
+            username
+            email
+            totalIncomes
+            incomes {
+                _id
+                name
+                amount
+            }
+            expenses {
+                _id
+                name
+                cost
+            }
+            totalExpenses
         }
     }
 `;
-// Mutation to use if we decide to remove an expense via 'expenseId'.
-    // If so, need to add 'expenseId' field in Expenses schema.
-// export const REMOVE_EXPENSE = gql`
-//     mutation removeExpense($expenseId: String!) {
-//         removeExpense(expenseId: $expenseId) {
-//             username
-//             email
-//             password
-//             expenses {
-//                 name
-//                 expense
-//             }
-//         }
+
+// Takes: 
+// {
+//     userId: ID,
+//     expenseData: {
+//       name: String,
+//       cost: Int
 //     }
-// `
+// }
+export const ADD_EXPENSE = gql `
+    mutation AddExpense($userId: ID!, $expenseData: ExpenseInput!) {
+        addExpense(userId: $userId, expenseData: $expenseData) {
+            _id 
+            username
+            email
+            incomes {
+                _id
+                name
+                amount
+            }
+            expenses {
+                _id
+                name
+                cost
+            }
+            totalIncomes
+            totalExpenses
+        }
+    }
+`;
+
+// Takes: 
+// {
+//     userId: ID,
+//     incomeId: ID,
+//     newIncomeData: {
+//       name: String,
+//       amount: Int
+//     }
+// }
+export const UPDATE_INCOME = gql `
+    mutation UpdateIncome($userId: ID!, $incomeId: ID!, $newIncomeData: IncomeInput) {
+        updateIncome(userId: $userId, incomeId: $incomeId, newIncomeData: $newIncomeData) {
+            _id
+            username
+            email
+            incomes {
+                _id
+                name
+                amount
+            }
+            expenses {
+                _id
+                name
+                cost
+            }
+            totalIncomes
+            totalExpenses
+        }
+    }
+`;
+
+// Takes:
+// {
+//     userId: ID,
+//     expenseId: ID,
+//     newExpenseData: {
+//       name: String,
+//       cost: int
+//     }
+// } 
+export const UPDATE_EXPENSE = gql `
+    mutation UpdateExpense($userId: ID!, $expenseId: ID!, $newExpenseData: ExpenseInput) {
+        updateExpense(userId: $userId, expenseId: $expenseId, newExpenseData: $newExpenseData) {
+            _id 
+            username
+            email
+            incomes {
+                _id
+                name
+                amount
+            }
+            expenses {
+                _id
+                name
+                cost
+            }
+            totalIncomes
+            totalExpenses
+        }
+    }
+`;
+
+// Takes: 
+// { incomeId: ID }
+export const REMOVE_INCOME = gql `
+    mutation Mutation($incomeId: ID) {
+        removeIncome(incomeId: $incomeId) {
+            _id
+            username
+            email
+            incomes {
+                _id
+                name
+                amount
+            }
+            expenses {
+                _id
+                name
+                cost
+            }
+            totalIncomes
+            totalExpenses
+        }
+    }
+`;
+
+// Takes: 
+// { expenseId: ID }
+export const REMOVE_EXPENSE = gql `
+    mutation RemoveExpense($expenseId: ID) {
+        removeExpense(expenseId: $expenseId) {
+            _id
+            username
+            email
+            incomes {
+                _id
+                name
+                amount
+            }
+            expenses {
+                _id
+                name
+                cost
+            }
+            totalIncomes
+            totalExpenses
+        }
+    }
+`;
