@@ -33,7 +33,7 @@ function NavTabs() {
                         </Link>
                     </li >
                     <li className='navbar-items'>
-                        <a href="/home" onClick={() => Auth.logout()}>
+                        <a className='navTab' href="/home" onClick={() => Auth.logout()}>
                             logout
                         </a>
                     </li>   
