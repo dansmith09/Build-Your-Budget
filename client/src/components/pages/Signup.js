@@ -56,7 +56,7 @@ function Signup(props) {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="pwd"></label>
+            <label htmlFor="password"></label>
             <input
               placeholder="password"
               name="password"
