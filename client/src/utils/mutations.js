@@ -6,8 +6,6 @@ import { gql } from '@apollo/client';
 //     email: String,
 //     password: String
 // }
-
-// TODO: This returns a 'must have privatekey or secret' error although it does add a new user
 export const ADD_USER = gql `
     mutation Mutation($username: String!, $email: String!, $password: String!) {
         addUser(username: $username, email: $email, password: $password) {
