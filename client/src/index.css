@@ -1,20 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
 
 /* /////////////////////////////////////////////////////////////// */
 /* ////////////////////////// ROOT STYLING ////////////////////// */
 /* ///////////////////////////////////////////////////////////// */
 
 :root {
+  --strong-font: 'Poppins';
+  --med-font: 'Exo 2', sans-serif;
   --main-color: #170826;
   --main-text: #FFF;
   /* --med-text:
   --sub-text: */
   --active-text: green;
+  --black-gradient: linear-gradient(
+    144.39deg,
+    #ffffff -278.56%,
+    #6d6d6d -78.47%,
+    #11101d 91.61%
+  );
+}
+* {
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--main-color)
+  background-image: var(--black-gradient);
+  background-repeat: no-repeat;
+  height: 100%;
+  margin: 0;
+  background-attachment: fixed;
 }
 /* /////////////////////////////////////////////////////////////// */
 /* ////////////////////////// NAV STYLING /////////////////////// */
@@ -35,13 +51,13 @@ body {
 .navTab {
   color: var(--main-text);
   text-decoration: none;
-  font-family: 'Exo 2', sans-serif;
+  font-family: var(--strong-font);
   padding: 20px;
 }
 .active-navTab {
   text-decoration: none;
   color: var(--active-text);
-  font-family: 'Exo 2', sans-serif;
+  font-family: var(--strong-font);
   padding: 20px;
 }
 
@@ -57,7 +73,37 @@ body {
   text-align: center;
   margin-top: 100px;
   color: var(--main-text);
-  font-family: 'Exo 2', sans-serif;
+  font-family: var(--med-font);
+}
+.element-one-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%
+}
+.element-two-container {
+  
+}
+.element-one-header {
+  flex: 1 1 0%;
+  font-family: var(--strong-font);
+  font-weight: 600;
+}
+.text-gradient {
+  background: radial-gradient(
+    64.18% 64.18% at 71.16% 35.69%,
+    #def9fa 0.89%,
+    #bef3f5 17.23%,
+    #9dedf0 42.04%,
+    #7de7eb 55.12%,
+    #5ce1e6 71.54%,
+    #33bbcf 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }
 
 /* /////////////////////////////////////////////////////////////// */
@@ -71,7 +117,7 @@ body {
   text-align: center;
   margin-top: 100px;
   color: var(--main-text);
-  font-family: 'Exo 2', sans-serif;
+  font-family: var(--med-font);
 }
 
 /* /////////////////////////////////////////////////////////////// */
@@ -85,8 +131,48 @@ body {
   text-align: center;
   margin-top: 100px;
   color: var(--main-text);
-  font-family: 'Exo 2', sans-serif;
+  font-family: var(--med-font);
 }
+/* /////////////////////////////////////////////////////////////// */
+/* ////////////////////////// LOGIN STYLING ///////////////////// */
+/* ///////////////////////////////////////////////////////////// */
+.form-header {
+  display: flex;
+  justify-content: center;
+}
+.form-container {
+  margin-top: 30vh;
+  font-family: var(--med-font);
+  color: var(--main-text);
+}
+.form-group {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px
+}
+.error-text {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.form-button {
+  display: flex;
+  justify-content: center;
+}
+button {
+  width: 100px;
+  border: 1px solid green;
+  background: var(--main-color);
+  color: var(--main-text);
+  cursor: pointer;
+}
+
+
+
+/* /////////////////////////////////////////////////////////////// */
+/* ////////////////////////// SIGNUP STYLING //////////////////// */
+/* ///////////////////////////////////////////////////////////// */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

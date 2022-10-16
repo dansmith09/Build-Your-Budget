@@ -14,8 +14,8 @@ function NavTabs() {
                     <li className='navbar-items'>
                         <Link
                         className={({ isActive }) => (isActive ? 'active-navTab' : 'navTab')}
-                        to="/">
-                            Home
+                        to="/home">
+                            home
                         </Link>
                     </li>
                     <li className='navbar-items'>
@@ -33,7 +33,7 @@ function NavTabs() {
                         </Link>
                     </li >
                     <li className='navbar-items'>
-                        <a href="/" onClick={() => Auth.logout()}>
+                        <a className='navTab' href="/home" onClick={() => Auth.logout()}>
                             logout
                         </a>
                     </li>   
