@@ -30,13 +30,13 @@ class AuthService {
     login(idToken) {
         // Set user data in LS
         localStorage.setItem('id_token', idToken)
-        window.location.assign('/home')
+        window.location.assign('/')
     }
     // Clear user data on logout
     logout() {
         localStorage.removeItem('id_token');
         // Nav user to homepage after logout -- resets state of app
-        window.location.assign('/home')
+        window.location.assign('/')
     }
 
 }
