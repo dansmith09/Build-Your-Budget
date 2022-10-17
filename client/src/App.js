@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 import {
     ApolloClient,
     InMemoryCache,
@@ -43,6 +44,7 @@ function App() {
                 <div>
                   <NavTabs/>
                     <Routes>
+                        <Route path="*" element={<Navigate to="/home" />}/> 
                         <Route path="/home" element={<Home />}/>
                         <Route path="/dashboard" element={<Dashboard />}/>
                         <Route path="/donate" element={<Donate />}/>
@@ -56,3 +58,4 @@ function App() {
 }
 
 export default App;
+
