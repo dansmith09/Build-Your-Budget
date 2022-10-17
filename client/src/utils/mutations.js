@@ -27,11 +27,11 @@ export const ADD_USER = gql `
     // TODO: Check line 34 - expenses or expense?
     //       Are we using saveExpenseInput in typeDefs?
 export const ADD_EXPENSE = gql `
-mutation addExpense($expenseId: ID!, $expense: String!) {
-    addExpense(expenseId: $expenseId, expense: $expense) {
+mutation addExpense($userId: ID!, $expenseData: ExpenseInput!) {
+    addExpense(userId: $userId, expenseData: $expenseData) {
         _id
         name
-        expense 
+        cost 
     }
 }
 

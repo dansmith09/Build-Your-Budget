@@ -123,6 +123,15 @@ body {
   color: var(--main-text);
   font-family: var(--med-font);
 }
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 200px;
+  font-family: var(--strong-font);
+  float: left;
+  margin: 50px;
+}
 
 /* /////////////////////////////////////////////////////////////// */
 /* ////////////////////////// DONATE STYLING //////////////////// */
@@ -171,8 +180,6 @@ button {
   color: var(--main-text);
   cursor: pointer;
 }
-
-
 
 /* /////////////////////////////////////////////////////////////// */
 /* ////////////////////////// SIGNUP STYLING //////////////////// */
