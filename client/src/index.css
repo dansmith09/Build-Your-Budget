@@ -38,10 +38,11 @@ body {
 .navbar {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
   padding: 0;
   margin-top: 30px;
-  margin-bottom: 30px
+  margin-bottom: 30px;
+  margin-right: 50px;
 }
 .navbar-items {
   list-style: none;
@@ -64,7 +65,6 @@ body {
 /* /////////////////////////////////////////////////////////////// */
 /* ////////////////////////// HOME STYLING ////////////////////// */
 /* ///////////////////////////////////////////////////////////// */
-
 .home-header-container {
   display: flex;
   flex-wrap: wrap;
@@ -80,7 +80,9 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%
+  width: 100%;
+  color: var(--main-text);
+  font-size: 48px
 }
 .element-two-container {
   
@@ -89,6 +91,8 @@ body {
   flex: 1 1 0%;
   font-family: var(--strong-font);
   font-weight: 600;
+  color: var(--main-text);
+  font-size: 48px;
 }
 .text-gradient {
   background: radial-gradient(
@@ -103,7 +107,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
+  /* text-fill-color: transparent; */
 }
 
 /* /////////////////////////////////////////////////////////////// */
@@ -163,7 +167,7 @@ body {
 button {
   width: 100px;
   border: 1px solid green;
-  background: var(--main-color);
+  background: transparent;
   color: var(--main-text);
   cursor: pointer;
 }
