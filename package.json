@@ -22,5 +22,8 @@
   "homepage": "https://github.com/dansmith09/Build-Your-Budget#readme",
   "devDependencies": {
     "concurrently": "^7.4.0"
+  },
+  "dependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
