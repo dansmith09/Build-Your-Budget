@@ -8,30 +8,30 @@ const typeDefs = gql`
     password: String!
     incomes: [Income]
     expenses: [Expense]
-    totalIncomes: Int
-    totalExpenses: Int
+    totalIncomes: Float
+    totalExpenses: Float
   }
 
   type Expense {
     _id: ID
     name: String!
-    cost: Int!
+    cost: Float!
   }
 
   type Income {
     _id: ID
     name: String!
-    amount: Int!
+    amount: Float!
   }
 
   input ExpenseInput {
     name: String!
-    cost: Int!
+    cost: Float!
   }
 
   input IncomeInput {
     name: String!
-    amount: Int!
+    amount: Float!
   }
 
   type Auth {

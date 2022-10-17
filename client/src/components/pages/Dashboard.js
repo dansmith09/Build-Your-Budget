@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
+import React, { useEffect, useState } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
 import { ADD_EXPENSE } from '../../utils/mutations';
+import { QUERY_ME} from '../../utils/queries';
+
 
 
 function AddExpense(props) {
-
+    const [userData, setUserData] = useState({});
     const [formState, setFormState] = useState({ name: '', cost: '' });
     const [addExpense, { error }] = useMutation(ADD_EXPENSE);
+    const { loading, data} = useQuery(QUERY_ME);
+
+    
+
+    useEffect(() => {
+        if (data) {
+            setUserData(data);
+        }
+        console.log(data);
+    },[data])
 
     const handleInputChange = (event) => {
         const {name, value} = event.target;
@@ -20,7 +32,11 @@ function AddExpense(props) {
         try {
             const { data } = await addExpense({
                 variables: {
-                    ...formState 
+                    userId: userData.me._id,
+                    expenseData: {
+                        name: formState.name,
+                        cost: parseFloat(formState.cost)
+                    }
                 }
             });
             console.log(formState);
@@ -28,10 +44,10 @@ function AddExpense(props) {
             console.log(err)
         }
 
-        setFormState({
-            name: '',
-            cost: '',
-        })
+        // setFormState({
+        //     name: '',
+        //     cost: '',
+        // })
     }
 
 
@@ -61,6 +77,7 @@ function AddExpense(props) {
                     <div>
                     <label htmlFor="cost"></label>
                         <input 
+                            onChange={handleInputChange}
                             type="text" 
                             id="cost" 
                             name="cost" 
