@@ -58,9 +58,27 @@ const BarChart = () => {
     ],
   };
 
+  const options = {
+    indexAxis: 'y',
+    elements: {
+      bar: {
+        borderWidth: 2,
+      },
+    },
+    responsive: true,
+    plugins: {
+      legend: {
+        display: false
+      },
+      title: {
+        display: false,
+      },
+    },
+  };
+
   return (
     <div>
-      <Bar data={chartData}/>
+      <Bar data={chartData} options={options}/>
     </div>
   );
 }

@@ -89,8 +89,12 @@ function AddExpense(props) {
                     <button type="submit">add</button>
                 </form>
             </div>
-            <DoughnutChart />
-            <BarChart />
+            <div className="DoughnutChartHolder">
+                <DoughnutChart />
+            </div>
+            <div className="BarChartHolder">
+                <BarChart />
+            </div>
         </div>
     )
 }

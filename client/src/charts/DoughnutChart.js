@@ -17,7 +17,7 @@ const DoughnutChart = () => {
   useEffect(() => {
       if (data) {
         setLabels(data.me.expenses.map((expense) => {
-          return `${Math.round((expense.cost/data.me.totalExpenses)*100)}%: ${expense.name}`
+          return `${Math.round((expense.cost/data.me.totalExpenses)*100)}% ${expense.name}`
         } ))
         setUserChartData(data.me.expenses.map(({cost}) => cost))
       }
@@ -30,30 +30,38 @@ const DoughnutChart = () => {
         label: '# of Votes',
         data: userChartData,
         backgroundColor: [
-          'rgba(255, 105, 235, 0.2)',
-          'rgba(255, 134, 200, 0.2)',
-          'rgba(255, 163, 165, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 113, 113, 0.2)',
+          'rgba(255, 166, 113, 0.2)',
+          'rgba(255, 205, 113, 0.2)',
+          'rgba(255, 243, 113, 0.2)',
+          'rgba(208, 255, 113, 0.2)',
+          'rgba(137, 255, 113, 0.2)',
+          'rgba(113, 255, 164, 0.2)',
+          'rgba(113, 255, 231, 0.2)',
+          'rgba(113, 220, 255, 0.2)',
+          'rgba(113, 158, 255, 0.2)',
+          'rgba(125, 113, 255, 0.2)',
+          'rgba(187, 113, 255, 0.2)',
+          'rgba(246, 113, 255, 0.2)',
+          'rgba(255, 113, 211, 0.2)',
+          'rgba(255, 113, 155, 0.2)'
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
+          'rgba(255, 113, 113, 1)',
+          'rgba(255, 166, 113, 1)',
+          'rgba(255, 205, 113, 1)',
+          'rgba(255, 243, 113, 1)',
+          'rgba(208, 255, 113, 1)',
+          'rgba(137, 255, 113, 1)',
+          'rgba(113, 255, 164, 1)',
+          'rgba(113, 255, 231, 1)',
+          'rgba(113, 220, 255, 1)',
+          'rgba(113, 158, 255, 1)',
+          'rgba(125, 113, 255, 1)',
+          'rgba(187, 113, 255, 1)',
+          'rgba(246, 113, 255, 1)',
+          'rgba(255, 113, 211, 1)',
+          'rgba(255, 113, 155, 1)'
         ],
         borderWidth: 2,
       },
