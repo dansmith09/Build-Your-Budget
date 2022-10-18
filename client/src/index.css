@@ -23,12 +23,14 @@
 }
 * {
   scroll-behavior: smooth;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
   background-image: var(--black-gradient);
   background-repeat: no-repeat;
-  height: 100%;
+  height: 100vh;
   margin: 0;
   background-attachment: fixed;
 }
@@ -66,49 +68,54 @@ body {
 /* ////////////////////////// HOME STYLING ////////////////////// */
 /* ///////////////////////////////////////////////////////////// */
 .home-header-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
+    max-width: 1218px;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10%;
+}
+.home-header-container h1 {
   text-align: center;
-  margin-top: 100px;
+  max-width: 780px;
   color: var(--main-text);
-  font-family: var(--med-font);
-}
-.element-one-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  color: var(--main-text);
-  font-size: 48px
-}
-.element-two-container {
-  
-}
-.element-one-header {
-  flex: 1 1 0%;
   font-family: var(--strong-font);
-  font-weight: 600;
-  color: var(--main-text);
-  font-size: 48px;
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: -.02em;
+  padding-bottom: 0;
+  margin: auto
 }
-.text-gradient {
-  background: radial-gradient(
-    64.18% 64.18% at 71.16% 35.69%,
-    #def9fa 0.89%,
-    #bef3f5 17.23%,
-    #9dedf0 42.04%,
-    #7de7eb 55.12%,
-    #5ce1e6 71.54%,
-    #33bbcf 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  /* text-fill-color: transparent; */
+.cards-section {
+  font-family: var(--strong-font);
+
 }
+.container {
+  width: 70%;
+  margin: 50px auto;
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 25px ;
+}
+.card-content {
+  padding: 20px 10px;
+  text-align: center;
+  align-items: center;
+}
+.cards {
+  background-color: #FFF;
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+  height: 225px;
+  border-radius: 10px;
+}
+.card-content p {
+  margin: 15px 0px;
+  font-size: 15px
+}
+
+
 
 /* /////////////////////////////////////////////////////////////// */
 /* ////////////////////////// DASH STYLING ////////////////////// */
