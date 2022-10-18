@@ -9,30 +9,54 @@ export default function Home(){
                 </h1>
             </div>
             <section className='cards-section'>
-            <h1> Expense </h1>
+                <div className='card-section-head'>
+                    <h1 class='card-section-header'>Features</h1>
+                </div>
+            
                 <div className='container'>
                     <div className='cards'>
                         <div className='card-content'>
-                            <h3> More test content</h3>
-                            <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum,
-                            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                            <h3>Header</h3>
+                            <p>This is some test content
                             </p>
                         </div>
                     </div>
                     <div className='cards'>
                         <div className='card-content'>
-                            <h3> More test content</h3>
-                            <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum,
-                            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                            <h3>Header</h3>
+                            <p>This is some test content
                             </p>
                         </div>
                     </div>
                     <div className='cards'>
                         <div className='break-section'></div>
                         <div className='card-content'>
-                            <h3> More test content</h3>
-                            <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum,
-                            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                            <h3>Header</h3>
+                            <p>This is some test content
+                            </p>
+                        </div>
+                    </div>
+                    <div className='cards'>
+                        <div className='break-section'></div>
+                        <div className='card-content'>
+                            <h3>Header</h3>
+                            <p>This is some test content
+                            </p>
+                        </div>
+                    </div>
+                    <div className='cards'>
+                        <div className='break-section'></div>
+                        <div className='card-content'>
+                            <h3>Header</h3>
+                            <p>This is some test content
+                            </p>
+                        </div>
+                    </div>
+                    <div className='cards'>
+                        <div className='break-section'></div>
+                        <div className='card-content'>
+                            <h3>Header</h3>
+                            <p>This is some test content
                             </p>
                         </div>
                     </div>
