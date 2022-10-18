@@ -119,7 +119,7 @@ function AddExpense(props) {
                                 type="text" 
                                 id="name" 
                                 name="name" 
-                                placeholder="name"
+                                placeholder="expense"
                             >
                             </input>
                         </div>
@@ -151,7 +151,7 @@ function AddExpense(props) {
                                 type="text" 
                                 id="name" 
                                 name="name" 
-                                placeholder="name"
+                                placeholder="income"
                             >
                             </input>
                         </div>
