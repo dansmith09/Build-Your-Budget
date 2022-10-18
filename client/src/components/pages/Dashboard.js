@@ -103,40 +103,75 @@ function AddExpense(props) {
     return (
         <div>
             <div className='dash-header-container'>
-                <h1 className='dash-header'>This will be the dashboard page</h1>
-                <p>This will have lots of functionality!</p>
+                <h1 className='dash-header'>Expense Planner</h1>
             </div>
-            {/* EXPENSE FORM CONTAINER */}
-            <div className='dashboard-container'>
-                <form onSubmit={handleExpenseFormSubmit}>
-                    <div>
-                        <p> add an expense</p>
-                    </div>
-                    <div>
-                    <label htmlFor="name"></label>
-                        <input
-                            onChange={handleExpenseChange}
-                            type="text" 
-                            id="name" 
-                            name="name" 
-                            placeholder="name"
-                        >
-                        </input>
-                    </div>
-                    <div>
-                    <label htmlFor="cost"></label>
-                        <input 
-                            onChange={handleExpenseChange}
-                            type="text" 
-                            id="cost" 
-                            name="cost" 
-                            placeholder="cost"
-                        >
-                        </input>
-                    </div>
-                    <button type="submit">add</button>
+            <section className='dash-form-container'>
+                <div className='dashboard-container'>
+                    <form onSubmit={handleExpenseFormSubmit}>
+                        <div className='form-head'>
+                            <p> Add an Expense</p>
+                        </div>
+                        <div>
+                        <label htmlFor="name"></label>
+                            <input
+                                className='form-input'
+                                onChange={handleExpenseChange}
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                placeholder="name"
+                            >
+                            </input>
+                        </div>
+                        <div>
+                        <label htmlFor="cost"></label>
+                            <input 
+                                className='form-input'
+                                onChange={handleExpenseChange}
+                                type="text" 
+                                id="cost" 
+                                name="cost" 
+                                placeholder="cost"
+                            >
+                            </input>
+                        </div>
+                        <button className='input-button' type="submit">add</button>
+                    </form>
+                </div>
+                <div className='dashboard-container'>
+                    <form onSubmit={handleIncomeFormSubmit}>
+                        <div>
+                            <p className='form-head'> Add an Income</p>
+                        </div>
+                        <div>
+                        <label htmlFor="name"></label>
+                            <input
+                                className='form-input'
+                                onChange={handleIncomeChange}
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                placeholder="name"
+                            >
+                            </input>
+                        </div>
+                        <div>
+                        <label htmlFor="amount"></label>
+                            <input
+                                className='form-input'
+                                onChange={handleIncomeChange}
+                                type="text" 
+                                id="amount" 
+                                name="amount" 
+                                placeholder="amount"
+                            >
+                            </input>
+                        </div>
+                    <button className='input-button' type="submit">add</button>
                 </form>
             </div>
+            </section>
+            {/* EXPENSE FORM CONTAINER */}
             <div>
                 {expenseList.map((expense) => {
                     return (
@@ -156,36 +191,7 @@ function AddExpense(props) {
                 </div>
             </div>
             {/* INCOME FORM CONTAINER */}
-            <div className='dashboard-container'>
-                <form onSubmit={handleIncomeFormSubmit}>
-                    <div>
-                        <p> add your income</p>
-                    </div>
-                    <div>
-                    <label htmlFor="name"></label>
-                        <input
-                            onChange={handleIncomeChange}
-                            type="text" 
-                            id="name" 
-                            name="name" 
-                            placeholder="name"
-                        >
-                        </input>
-                    </div>
-                    <div>
-                    <label htmlFor="amount"></label>
-                        <input 
-                            onChange={handleIncomeChange}
-                            type="text" 
-                            id="amount" 
-                            name="amount" 
-                            placeholder="amount"
-                        >
-                        </input>
-                    </div>
-                    <button type="submit">add</button>
-                </form>
-            </div>
+            
             <div>
                 {incomeList.map((income) => {
                     return (

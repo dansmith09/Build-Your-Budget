@@ -11,6 +11,7 @@
   --med-font: 'Exo 2', sans-serif;
   --main-color: #170826;
   --main-text: #FFF;
+  --input-bg: rgba(57, 63, 84, 0.8);
   /* --med-text:
   --sub-text: */
   --card-bg: linear-gradient(
@@ -164,6 +165,34 @@ body {
   float: left;
   margin: 50px;
 }
+.dash-form-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+.form-input {
+  height: 30px;
+  background: var(--input-bg);
+  box-shadow: none;
+  border: none;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+.form-input:focus {
+  outline: none;
+}
+.form-head {
+  margin-bottom: 20px;
+  color: rgb(181, 181, 181);
+}
+.input-button {
+  background: var(--active-text);
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  color: rgb(181, 181, 181);
+}
+
 
 /* /////////////////////////////////////////////////////////////// */
 /* ////////////////////////// DONATE STYLING //////////////////// */
@@ -205,7 +234,7 @@ body {
   display: flex;
   justify-content: center;
 }
-button {
+.login-button {
   width: 100px;
   border: 1px solid green;
   background: transparent;
