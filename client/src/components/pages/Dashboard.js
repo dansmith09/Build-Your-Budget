@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { ADD_EXPENSE } from '../../utils/mutations';
-import { QUERY_ME} from '../../utils/queries';
-
-import ExpenseDonughtChart from '../ExpenseDoughnutChart';
-
+import { QUERY_ME } from '../../utils/queries';
+import DoughnutChart from '../../charts/DoughnutChart'
 
 
 function AddExpense(props) {
@@ -46,10 +44,10 @@ function AddExpense(props) {
             console.log(err)
         }
 
-        // setFormState({
-        //     name: '',
-        //     cost: '',
-        // })
+        setFormState({
+            name: '',
+            cost: '',
+        })
     }
 
 
@@ -89,8 +87,8 @@ function AddExpense(props) {
                     </div>
                     <button type="submit">add</button>
                 </form>
-                <ExpenseDonughtChart />
             </div>
+            <DoughnutChart />
         </div>
     )
 }
