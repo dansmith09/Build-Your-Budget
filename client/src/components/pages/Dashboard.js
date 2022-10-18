@@ -11,6 +11,9 @@ function AddExpense(props) {
     const [addExpense, { error }] = useMutation(ADD_EXPENSE);
     const { loading, data} = useQuery(QUERY_ME);
 
+    const expenseList = data?.me.expenses || [];
+    const totalExpenses = data?.me.totalExpenses || [];
+
     
 
     useEffect(() => {
@@ -87,6 +90,21 @@ function AddExpense(props) {
                     </div>
                     <button type="submit">add</button>
                 </form>
+            </div>
+            <div>
+                {expenseList.map((expense) => {
+                    return (
+                      <ul>
+                        <li>
+                            {expense.name}
+                        </li>
+                        <li>
+                            {expense.cost}
+                        </li>
+                      </ul>
+                    )
+                })}
+                <p> {totalExpenses}</p>
             </div>
         </div>
     )
