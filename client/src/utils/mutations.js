@@ -66,7 +66,7 @@ export const LOGIN_USER = gql `
 //     userId: ID,
 //     incomeData: {
 //       name: String,
-//       amount: Int
+//       amount: Float
 //     }
 // }
 export const ADD_INCOME = gql `
@@ -96,7 +96,7 @@ export const ADD_INCOME = gql `
 //     userId: ID,
 //     expenseData: {
 //       name: String,
-//       cost: Int
+//       cost: Float
 //     }
 // }
 export const ADD_EXPENSE = gql `
@@ -127,7 +127,7 @@ export const ADD_EXPENSE = gql `
 //     incomeId: ID,
 //     newIncomeData: {
 //       name: String,
-//       amount: Int
+//       amount: Float
 //     }
 // }
 export const UPDATE_INCOME = gql `
@@ -158,7 +158,7 @@ export const UPDATE_INCOME = gql `
 //     expenseId: ID,
 //     newExpenseData: {
 //       name: String,
-//       cost: int
+//       cost: Float
 //     }
 // } 
 export const UPDATE_EXPENSE = gql `
