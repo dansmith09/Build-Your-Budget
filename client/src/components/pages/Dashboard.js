@@ -203,6 +203,9 @@ function AddExpense(props) {
                     <p>Your total income:  {totalIncomes} </p>
                 </div>
             </div>
+            <div>
+                <p> Disposable income : {totalIncomes - totalExpenses} </p>
+            </div>
         </div>
     )
 }
