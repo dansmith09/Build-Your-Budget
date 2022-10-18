@@ -3,6 +3,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import { ADD_EXPENSE } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
 import DoughnutChart from '../../charts/DoughnutChart'
+import BarChart from '../../charts/BarChart'
 
 
 function AddExpense(props) {
@@ -89,6 +90,7 @@ function AddExpense(props) {
                 </form>
             </div>
             <DoughnutChart />
+            <BarChart />
         </div>
     )
 }
