@@ -171,6 +171,22 @@ function AddExpense(props) {
                 </form>
             </div>
             </section>
+            <section className='dashboard-card-section'>
+                <div className='dashboard-cards'>
+                    <div className='dashboard-card'>
+                    <div className='card-content'>
+
+                    </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+
             {/* EXPENSE FORM CONTAINER */}
             <div>
                 {expenseList.map((expense) => {
