@@ -23,15 +23,10 @@ function AddExpense(props) {
     const incomeList = data?.me.incomes || [];
     const totalIncomes = data?.me.totalIncomes || [];
 
-
-
-    
-
     useEffect(() => {
         if (data) {
             setUserData(data);
         }
-        console.log(data);
     },[data])
 
     ///////////////////////////////////////////////////////////////////
@@ -40,7 +35,6 @@ function AddExpense(props) {
     const handleExpenseChange = (event) => {
         const {name, value} = event.target;
         setExpenseState({...expenseState, [name]: value});
-        console.log(expenseState);
     }
 
     const handleExpenseFormSubmit = async (event) => {
@@ -56,16 +50,16 @@ function AddExpense(props) {
                     }
                 }
             });
-            console.log(expenseState);
+            
         } catch (err) {
             console.log(err)
         }
 
 
-        // setExpenseState({
-        //     name: '',
-        //     cost: '',
-        // })
+        setExpenseState({
+            name: '',
+            cost: '',
+        });
     }
 
 
@@ -76,7 +70,7 @@ function AddExpense(props) {
      const handleIncomeChange = (event) => {
         const { name, value} = event.target;
         setIncomeState({...incomeState, [name]: value});
-        console.log(incomeState)
+        
     }
 
     const handleIncomeFormSubmit = async (event) => {
@@ -92,10 +86,14 @@ function AddExpense(props) {
                     }
                 }
             });
-            console.log(incomeState)
         } catch (err) {
             console.log(err)
         }
+
+        setIncomeState({
+            name: '',
+            amount: '',
+        })
     }
 
 

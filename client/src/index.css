@@ -178,6 +178,7 @@ body {
   border: none;
   margin-bottom: 10px;
   padding: 10px;
+  color: var(--main-text);
 }
 .form-input:focus {
   outline: none;
