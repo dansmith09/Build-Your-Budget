@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import { ADD_EXPENSE } from '../../utils/mutations';
-import { ADD_INCOME } from '../../utils/mutations';
-import { QUERY_ME} from '../../utils/queries';
-
-
+import { ADD_EXPENSE, ADD_INCOME } from '../../utils/mutations';
+import { QUERY_ME } from '../../utils/queries';
+import DoughnutChart from '../../charts/DoughnutChart'
+import BarChart from '../../charts/BarChart'
 
 function AddExpense(props) {
     const [userData, setUserData] = useState({});
@@ -60,12 +59,11 @@ function AddExpense(props) {
         } catch (err) {
             console.log(err)
         }
-
-
-        // setExpenseState({
-        //     name: '',
-        //     cost: '',
-        // })
+        
+        setFormState({
+            name: '',
+            cost: '',
+        })
     }
 
 
@@ -205,6 +203,12 @@ function AddExpense(props) {
             </div>
             <div>
                 <p> Disposable income : {totalIncomes - totalExpenses} </p>
+            </div>
+            <div className="DoughnutChartHolder">
+                <DoughnutChart />
+            </div>
+            <div className="BarChartHolder">
+                <BarChart />
             </div>
         </div>
     )
