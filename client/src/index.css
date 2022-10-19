@@ -140,6 +140,16 @@ body {
   font-size: 15px;
   color: rgb(151, 149, 149)
 }
+.homepage-illustration {
+  margin-top: 100px;
+  width: 99vw;
+  height: 900px;
+  background-image: url('./assets/expense-homepage-illustration.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position:center;
+
+}
 
 
 
