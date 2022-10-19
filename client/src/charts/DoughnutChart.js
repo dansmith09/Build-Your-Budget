@@ -16,6 +16,7 @@ const DoughnutChart = () => {
 
   useEffect(() => {
       if (data) {
+        console.log(data)
         setLabels(data.me.expenses.map((expense) => {
           return `${Math.round((expense.cost/data.me.totalExpenses)*100)}% ${expense.name}`
         } ))

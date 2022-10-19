@@ -14,6 +14,7 @@ import Dashboard from './components/pages/Dashboard';
 import Donate from './components/pages/Donate';
 import Login from './components/pages/Login';
 import Signup from './components/pages/Signup';
+import LineChart from './charts/LineChart';
 
 const httpLink = createHttpLink({
     uri: '/graphql',
@@ -50,6 +51,7 @@ function App() {
                         <Route path="/donate" element={<Donate />}/>
                         <Route path="/login" element={<Login />}/>
                         <Route path="/signup" element={<Signup />}/>
+                        <Route path="/chart" element={<LineChart />}/>
                     </Routes>
                 </div>
             </Router>

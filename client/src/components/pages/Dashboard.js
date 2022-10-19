@@ -4,6 +4,7 @@ import { ADD_EXPENSE, ADD_INCOME } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
 import DoughnutChart from '../../charts/DoughnutChart'
 import BarChart from '../../charts/BarChart'
+import LineChart from '../../charts/LineChart';
 
 function AddExpense(props) {
     const [userData, setUserData] = useState({});
@@ -60,7 +61,7 @@ function AddExpense(props) {
             console.log(err)
         }
         
-        setFormState({
+        setExpenseState({
             name: '',
             cost: '',
         })
@@ -94,6 +95,11 @@ function AddExpense(props) {
         } catch (err) {
             console.log(err)
         }
+
+        setIncomeState({
+            name: '',
+            amount: '',
+        })
     }
 
 
@@ -209,6 +215,9 @@ function AddExpense(props) {
             </div>
             <div className="BarChartHolder">
                 <BarChart />
+            </div>
+            <div className="LineChartHolder">
+                <LineChart />
             </div>
         </div>
     )
