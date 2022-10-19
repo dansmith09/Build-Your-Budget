@@ -171,63 +171,37 @@ function AddExpense(props) {
                 </form>
             </div>
             </section>
-            <section className='dashboard-card-section'>
+            <section>
                 <div className='dashboard-cards'>
                     <div className='dashboard-card'>
-                    <div className='card-content'>
-
+                    <h2 className='dashboard-card-header'> Expenses </h2>
+                    <br></br>
+                        {expenseList.map((expense) => {
+                            return (
+                                <div className='dashboard-card-content'>
+                                    <p>{expense.name} : ${expense.cost}</p>
+                                </div>
+                            ) 
+                        })}
+                        <p className='dashboard-card-content'> Total: ${totalExpenses}</p>
                     </div>
+                    <div className='dashboard-card'>
+                    <h2 className='dashboard-card-header'> Income(s) </h2>
+                    <br></br>
+                        {incomeList.map((income) => {
+                            return (
+                                <div className='dashboard-card-content'>
+                                    <p>{income.name} : ${income.amount}</p>
+                                </div>
+                            ) 
+                        })}
+                        <p className='dashboard-card-content'> Total: ${totalExpenses}</p>
                     </div>
-                </div>
-            </section>
-
-
-
-
-
-
-
-            {/* EXPENSE FORM CONTAINER */}
-            <div>
-                {expenseList.map((expense) => {
-                    return (
-                        <ul>
-                            <li>
-                            {expense.name}
-                            </li>
-                            <li>
-                                {expense.cost}
-                            </li>
-                        </ul>
-                    )
-                })}
-                <div>
-                    <p>Total Expenses: {totalExpenses} </p>
                     
                 </div>
-            </div>
-            {/* INCOME FORM CONTAINER */}
+               
             
-            <div>
-                {incomeList.map((income) => {
-                    return (
-                        <ul>
-                            <li>
-                            {income.name}
-                            </li>
-                            <li>
-                                {income.amount}
-                            </li>
-                        </ul>
-                    )
-                })}
-                <div>
-                    <p>Your total income:  {totalIncomes} </p>
-                </div>
-            </div>
-            <div>
-                <p> Disposable income : {totalIncomes - totalExpenses} </p>
-            </div>
+            </section>
         </div>
     )
 }
