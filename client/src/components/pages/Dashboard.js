@@ -193,7 +193,7 @@ function AddExpense(props) {
                                 </div>
                             ) 
                         })}
-                        <p className='dashboard-card-content'> Total: ${totalExpenses}</p>
+                        <p className='dashboard-card-content'> Total: ${totalIncomes}</p>
                     </div>
                     
                 </div>
