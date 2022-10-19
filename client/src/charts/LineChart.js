@@ -65,7 +65,7 @@ const LineChart = () => {
             setDisposableIncome(data.me.totalIncomes - data.me.totalExpenses)
             console.log(data, disposableIncome, data)
          }
-    },[])
+    },[data, disposableIncome])
 
     console.log(disposableIncome)
 
