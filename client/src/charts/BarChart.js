@@ -59,6 +59,7 @@ const BarChart = () => {
   };
 
   const options = {
+    aspectRatio: 1,
     scales: {
       y: {
         ticks: { color: 'white' }
@@ -67,7 +68,6 @@ const BarChart = () => {
         ticks: { color: 'white' }
       }
     },
-    indexAxis: 'y',
     elements: {
       bar: {
         borderWidth: 2,

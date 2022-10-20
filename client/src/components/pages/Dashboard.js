@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import { ADD_EXPENSE, ADD_INCOME } from '../../utils/mutations';
+import { ADD_EXPENSE, ADD_INCOME, REMOVE_EXPENSE, REMOVE_INCOME } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
 import DoughnutChart from '../../charts/DoughnutChart'
 import BarChart from '../../charts/BarChart'
@@ -23,6 +23,9 @@ function AddExpense(props) {
     // Income data to render
     const incomeList = data?.me.incomes || [];
     const totalIncomes = data?.me.totalIncomes || [];
+    // Remove Income
+    const [removeExpense, { deletExpenseError }] = useMutation(REMOVE_EXPENSE)
+    const [removeIncome, { deletIncomeError }] = useMutation(REMOVE_INCOME)
 
     useEffect(() => {
         if (data) {
@@ -91,6 +94,33 @@ function AddExpense(props) {
         })
     }
 
+     const handleRemoveExpense = async (expenseId) => {
+        console.log(expenseId)
+        try {
+          const { data } = await removeExpense({
+            variables: {
+                expenseId: expenseId 
+            },
+          });
+          console.log(data)
+        } catch (err) {
+          console.error(err);
+        }
+      };
+
+      const handleRemoveIncome = async (incomeId) => {
+         console.log(incomeId)
+         try {
+           const { data } = await removeIncome({
+             variables: {
+                 incomeId: incomeId 
+             },
+           });
+           console.log(data)
+         } catch (err) {
+           console.error(err);
+         }
+       };
 
 
     return (
@@ -163,48 +193,77 @@ function AddExpense(props) {
                         <button className='input-button' type="submit">add</button>
                     </form>
                 </div>
-                
             </section>
             <section>
                 <div className='dashboard-cards'>
                 <div className='dashboard-card'>
-                    <h2 className='dashboard-card-header'> Income(s) </h2>
+                    <h2 className='dashboard-card-header'> Income </h2>
                     <br></br>
-                        {incomeList.map((income) => {
+                    {incomeList.map((income) => {
                             return (
-                                <div className='dashboard-card-content'>
+                                <div
+                                key={`${income._id}`}
+                                className='dashboard-card-content'>
+                                <CiEdit
+                                    className='dashButton'
+                                    // onClick={() => handleEditincome(income._id)}
+                                />
                                     <p>{income.name} : ${income.amount}</p>
+                                        <MdDelete
+                                            className='dashButton'
+                                            onClick={() => handleRemoveIncome(income._id)}
+                                        />
                                 </div>
                             ) 
                         })}
-                        <p className='dashboard-card-content'> Total: ${totalIncomes}</p>
+                        <p className='boldTotal'> Total: ${totalIncomes}</p>
+                        <br></br>
+                        <p className='boldTotal'> Disposable income : ${totalIncomes - totalExpenses} </p>
                     </div>
                     <div className='dashboard-card'>
-                    <h2 className='dashboard-card-header'> Expenses </h2>
-                    <br></br>
+                        <h2 className='dashboard-card-header'> Expenses </h2>
+                        <br></br>
                         {expenseList.map((expense) => {
                             return (
-                                <div className='dashboard-card-content'>
+                                <div
+                                key={`${expense._id}`}
+                                className='dashboard-card-content'>
+                                <CiEdit
+                                    className='dashButton'
+                                    // onClick={() => handleEditExpense(expense._id)}
+                                />
                                     <p>{expense.name} : ${expense.cost}</p>
-                                    <CiEdit
-                                        onClick={() => console.log('edit Button')} />
-                                    <MdDelete />
+                                        <MdDelete
+                                            className='dashButton'
+                                            onClick={() => handleRemoveExpense(expense._id)}
+                                        />
                                 </div>
                             ) 
                         })}
-                        <p className='dashboard-card-content'> Total: ${totalExpenses}</p>
+                        <p className='boldTotal'> Total: ${totalExpenses}</p>
+                        {console.log(totalExpenses)}
                     </div>
                 </div>
             </section>
-            <div>
-                <p> Disposable income : {totalIncomes - totalExpenses} </p>
-            </div>
-            <div className="DoughnutChartHolder">
-                <DoughnutChart />
-            </div>
-            <div className="BarChartHolder">
-                <BarChart />
-            </div>
+            <section className='chartsDashboardContainer'>
+                {(totalExpenses.length !== 0 ) ?
+                ( 
+                <div className="DoughnutChartHolder">
+                    <h2 className='chartTitle'> Expenses Breakdown </h2>
+                    <DoughnutChart />
+                </div>
+                )
+                : ''}
+                {(totalIncomes.length !== 0 ) ?
+                ( 
+                <div className="BarChartHolder">
+                    <h2 className='chartTitle'> Income Breakdown </h2>
+                    <BarChart />
+                </div>
+                )
+                : ''}
+            </section>
+            <div className='spacer'></div>
         </div>
     )
 }
