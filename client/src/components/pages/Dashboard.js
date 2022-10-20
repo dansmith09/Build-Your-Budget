@@ -216,13 +216,20 @@ function AddExpense(props) {
                                 </div>
                             ) 
                         })}
-                        <p className='boldTotal'> Total: ${totalIncomes}</p>
-                        <br></br>
-                        <p className='boldTotal'> Disposable income : ${totalIncomes - totalExpenses} </p>
+                        {incomeList.length > 0 ?
+                            (   
+                                <>
+                                    <p className='boldTotal'> Total: ${totalIncomes}</p>
+                                    <p className='boldTotal'> Disposable income : ${totalIncomes - totalExpenses} </p>
+                                </>
+                            ) : 
+                            (
+                                <p className='boldTotal'>No Income Added</p> 
+                            )
+                        }
                     </div>
                     <div className='dashboard-card'>
                         <h2 className='dashboard-card-header'> Expenses </h2>
-                        <br></br>
                         {expenseList.map((expense) => {
                             return (
                                 <div
@@ -240,8 +247,14 @@ function AddExpense(props) {
                                 </div>
                             ) 
                         })}
-                        <p className='boldTotal'> Total: ${totalExpenses}</p>
-                        {console.log(totalExpenses)}
+                        {totalExpenses > 0 ?
+                            (
+                                <p className='boldTotal'> Total: ${totalExpenses}</p>
+                            ) :
+                            (
+                                <p className='boldTotal'>No Expenses Added</p> 
+                            )
+                        }
                     </div>
                 </div>
             </section>
