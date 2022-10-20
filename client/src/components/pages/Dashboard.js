@@ -22,15 +22,10 @@ function AddExpense(props) {
     const incomeList = data?.me.incomes || [];
     const totalIncomes = data?.me.totalIncomes || [];
 
-
-
-    
-
     useEffect(() => {
         if (data) {
             setUserData(data);
         }
-        console.log(data);
     },[data])
 
     ///////////////////////////////////////////////////////////////////
@@ -39,7 +34,6 @@ function AddExpense(props) {
     const handleExpenseChange = (event) => {
         const {name, value} = event.target;
         setExpenseState({...expenseState, [name]: value});
-        console.log(expenseState);
     }
 
     const handleExpenseFormSubmit = async (event) => {
@@ -55,15 +49,10 @@ function AddExpense(props) {
                     }
                 }
             });
-            console.log(expenseState);
+            
         } catch (err) {
             console.log(err)
         }
-        
-        setFormState({
-            name: '',
-            cost: '',
-        })
     }
 
 
@@ -74,7 +63,7 @@ function AddExpense(props) {
      const handleIncomeChange = (event) => {
         const { name, value} = event.target;
         setIncomeState({...incomeState, [name]: value});
-        console.log(incomeState)
+        
     }
 
     const handleIncomeFormSubmit = async (event) => {
@@ -90,10 +79,14 @@ function AddExpense(props) {
                     }
                 }
             });
-            console.log(incomeState)
         } catch (err) {
             console.log(err)
         }
+
+        setIncomeState({
+            name: '',
+            amount: '',
+        })
     }
 
 
@@ -101,105 +94,104 @@ function AddExpense(props) {
     return (
         <div>
             <div className='dash-header-container'>
-                <h1 className='dash-header'>This will be the dashboard page</h1>
-                <p>This will have lots of functionality!</p>
+                <h1 className='dash-header'>Expense Planner</h1>
             </div>
-            {/* EXPENSE FORM CONTAINER */}
+            <section className='dash-form-container'>
             <div className='dashboard-container'>
-                <form onSubmit={handleExpenseFormSubmit}>
-                    <div>
-                        <p> add an expense</p>
-                    </div>
-                    <div>
-                    <label htmlFor="name"></label>
-                        <input
-                            onChange={handleExpenseChange}
-                            type="text" 
-                            id="name" 
-                            name="name" 
-                            placeholder="name"
-                        >
-                        </input>
-                    </div>
-                    <div>
-                    <label htmlFor="cost"></label>
-                        <input 
-                            onChange={handleExpenseChange}
-                            type="text" 
-                            id="cost" 
-                            name="cost" 
-                            placeholder="cost"
-                        >
-                        </input>
-                    </div>
-                    <button type="submit">add</button>
+                    <form onSubmit={handleIncomeFormSubmit}>
+                        <div>
+                            <p className='form-head'> Add an Income</p>
+                        </div>
+                        <div>
+                        <label htmlFor="name"></label>
+                            <input
+                                className='form-input'
+                                onChange={handleIncomeChange}
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                placeholder="income"
+                            >
+                            </input>
+                        </div>
+                        <div>
+                        <label htmlFor="amount"></label>
+                            <input
+                                className='form-input'
+                                onChange={handleIncomeChange}
+                                type="text" 
+                                id="amount" 
+                                name="amount" 
+                                placeholder="amount"
+                            >
+                            </input>
+                        </div>
+                    <button className='input-button' type="submit">add</button>
                 </form>
             </div>
-            <div>
-                {expenseList.map((expense) => {
-                    return (
-                        <ul>
-                            <li>
-                            {expense.name}
-                            </li>
-                            <li>
-                                {expense.cost}
-                            </li>
-                        </ul>
-                    )
-                })}
-                <div>
-                    <p>Total Expenses: {totalExpenses} </p>
-                    
+                <div className='dashboard-container'>
+                    <form onSubmit={handleExpenseFormSubmit}>
+                        <div className='form-head'>
+                            <p> Add an Expense</p>
+                        </div>
+                        <div>
+                        <label htmlFor="name"></label>
+                            <input
+                                className='form-input'
+                                onChange={handleExpenseChange}
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                placeholder="expense"
+                            >
+                            </input>
+                        </div>
+                        <div>
+                        <label htmlFor="cost"></label>
+                            <input 
+                                className='form-input'
+                                onChange={handleExpenseChange}
+                                type="text" 
+                                id="cost" 
+                                name="cost" 
+                                placeholder="cost"
+                            >
+                            </input>
+                        </div>
+                        <button className='input-button' type="submit">add</button>
+                    </form>
                 </div>
-            </div>
-            {/* INCOME FORM CONTAINER */}
-            <div className='dashboard-container'>
-                <form onSubmit={handleIncomeFormSubmit}>
-                    <div>
-                        <p> add your income</p>
+                
+            </section>
+            <section>
+                <div className='dashboard-cards'>
+                <div className='dashboard-card'>
+                    <h2 className='dashboard-card-header'> Income(s) </h2>
+                    <br></br>
+                        {incomeList.map((income) => {
+                            return (
+                                <div className='dashboard-card-content'>
+                                    <p>{income.name} : ${income.amount}</p>
+                                </div>
+                            ) 
+                        })}
+                        <p className='dashboard-card-content'> Total: ${totalIncomes}</p>
                     </div>
-                    <div>
-                    <label htmlFor="name"></label>
-                        <input
-                            onChange={handleIncomeChange}
-                            type="text" 
-                            id="name" 
-                            name="name" 
-                            placeholder="name"
-                        >
-                        </input>
+                    <div className='dashboard-card'>
+                    <h2 className='dashboard-card-header'> Expenses </h2>
+                    <br></br>
+                        {expenseList.map((expense) => {
+                            return (
+                                <div className='dashboard-card-content'>
+                                    <p>{expense.name} : ${expense.cost}</p>
+                                </div>
+                            ) 
+                        })}
+                        <p className='dashboard-card-content'> Total: ${totalExpenses}</p>
                     </div>
-                    <div>
-                    <label htmlFor="amount"></label>
-                        <input 
-                            onChange={handleIncomeChange}
-                            type="text" 
-                            id="amount" 
-                            name="amount" 
-                            placeholder="amount"
-                        >
-                        </input>
-                    </div>
-                    <button type="submit">add</button>
-                </form>
-            </div>
-            <div>
-                {incomeList.map((income) => {
-                    return (
-                        <ul>
-                            <li>
-                            {income.name}
-                            </li>
-                            <li>
-                                {income.amount}
-                            </li>
-                        </ul>
-                    )
-                })}
-                <div>
-                    <p>Your total income:  {totalIncomes} </p>
                 </div>
+            </section>
+
             </div>
             <div>
                 <p> Disposable income : {totalIncomes - totalExpenses} </p>

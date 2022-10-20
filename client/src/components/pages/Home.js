@@ -63,6 +63,9 @@ export default function Home(){
 
                 </div>
             </section>
+            <section className='homepage-illustration'>
+
+            </section>
         </section>
         
     )
