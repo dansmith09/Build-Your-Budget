@@ -10,7 +10,7 @@ export default function Home(){
             </div>
             <section className='cards-section'>
                 <div className='card-section-head'>
-                    <h1 class='card-section-header'>Features</h1>
+                    <h1 className='card-section-header'>Features</h1>
                 </div>
             
                 <div className='container'>

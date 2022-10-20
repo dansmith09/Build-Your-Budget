@@ -209,6 +209,7 @@ body {
   justify-content: center;
   font-family: var(--strong-font)
 }
+
 .dashboard-card {
   flex: 0 1 25%;
   width: 200px;
@@ -227,10 +228,18 @@ body {
 .dashboard-card-content {
   color: rgb(181, 181, 181);
 }
-/* .expense-row {
-  text-align: center;
-} */
 
+/* /////////////////////////////////////////////////////////////// */
+/* ////////////////////////// CHARTS STYLING //////////////////// */
+/* ///////////////////////////////////////////////////////////// */
+.DoughnutChartHolder {
+  max-width: 500px;
+  width: 100vw;
+}
+.BarChartHolder {
+  max-width: 500px;
+  width: 100vw; /* for when on phone size */
+}
 
 /* /////////////////////////////////////////////////////////////// */
 /* ////////////////////////// DONATE STYLING //////////////////// */
