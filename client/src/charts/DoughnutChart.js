@@ -70,7 +70,22 @@ const DoughnutChart = () => {
 
   return (
     <div>
-      <Doughnut data={chartData} />
+      <Doughnut 
+        data={chartData}
+        options={
+          {
+            plugins: {
+                legend: {
+                    display: true,
+                    position:'bottom',
+                    labels: {
+                        color: 'white'
+                    }
+                }
+            }
+          }
+        }
+      />
     </div>
   );
 }
