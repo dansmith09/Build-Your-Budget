@@ -70,6 +70,7 @@ export default function Home(){
             <section className='tech-section'>
                 <div className='card-section-head'>
                     <h1 className='card-section-header'>Tech</h1>
+                    <p className='tech-content-para' >Expense was created by two student web developers, Dan and Ruben.</p>
                 </div>
             
                 <div className='tech-container'>
