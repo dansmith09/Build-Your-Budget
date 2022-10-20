@@ -129,7 +129,7 @@ const LineChart = () => {
         <button className={weeksToSimulate === 2080 ? 'lineChartButtonActive' : 'lineChartButton'} onClick={() => handleButtonClick(40)}> 40 Year </button>
         {savingsData && investingData ?
             <h3 className='forcastingText'>
-                Over a time period of <span>{weeksToSimulate / 52}</span> years, assuming a <span>6.6%</span> market return per anum
+                Over a time period of <span>{weeksToSimulate / 52} year{weeksToSimulate === 52? '' : 's' }</span>, assuming a <span>6.6%</span> market return per anum
                 and investing <span>${disposableIncome}</span> per week.
                 You would save a total of <span>${parseInt(savingsData[savingsData.length - 1])}</span>. However investing would return <span>${parseInt(investingData[investingData.length - 1])}</span>.
                 That's <span>${parseInt(investingData[investingData.length - 1]) - parseInt(savingsData[savingsData.length - 1])} more</span> than if you had't invested!
