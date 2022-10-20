@@ -74,6 +74,44 @@ body {
 /* /////////////////////////////////////////////////////////////// */
 /* ////////////////////////// HOME STYLING ////////////////////// */
 /* ///////////////////////////////////////////////////////////// */
+
+  /* /////////////// TECH GRID /////////////////// */
+.tech-section {
+  font-family: var(--strong-font);
+  margin-top: 4%;
+}
+.tech-icon {
+ font-size: 100px;
+ color: var(--main-text)
+}
+.tech-container {
+  width: 70%;
+  margin: 50px auto;
+  padding-bottom: 150px;
+  display: grid;
+  flex-wrap: wrap;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-gap: 10px ;
+}
+.tech-content {
+  margin-top: 25px;
+  text-align: center;
+  align-items: center;
+  color: #FFF
+}
+.tech-cards {
+  background-color: var(--card-bg);
+  height: 150px;
+}
+.tech-content-para {
+  color: rgb(151, 149, 149);
+}
+
+
+
+
+  /* /////////////// FEATURES GRID /////////////////// */
 .home-header-container {
     max-width: 1218px;
     width: 100%;
@@ -119,6 +157,7 @@ body {
   margin: 50px auto;
   display: grid;
   flex-wrap: wrap;
+  align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 25px ;
 }
@@ -138,8 +177,10 @@ body {
 .card-content p {
   margin: 15px 0px;
   font-size: 15px;
-  color: rgb(151, 149, 149)
+  color: rgb(151, 149, 149);
+  padding: 10px;
 }
+/* /////////////// HOMEPAGE ILLUSTRATION /////////////////// */
 .homepage-illustration {
   margin-top: 100px;
   width: 99vw;
@@ -148,8 +189,8 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   background-position:center;
-
 }
+
 
 
 
