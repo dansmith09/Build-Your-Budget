@@ -114,21 +114,21 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    removeExpense: async (parent, { expense }, context) => { // Works
+    removeExpense: async (parent, { expenseId }, context) => { // Works
       if (context.user) {
         return User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { expenses: expense } },
+          { $pull: { expenses: { _id: expenseId } } },
           { new: true }
         );
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    removeIncome: async (parent, { income }, context) => {
+    removeIncome: async (parent, { incomeId }, context) => {
       if (context.user) {
         return User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { incomes: income } },
+          { $pull: { incomes: { _id: incomeId } } },
           { new: true }
         );
       }

@@ -74,6 +74,7 @@ const DoughnutChart = () => {
         data={chartData}
         options={
           {
+            responsive: true,
             plugins: {
                 legend: {
                     display: true,
