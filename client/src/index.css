@@ -107,10 +107,9 @@ body {
 .tech-content-para {
   color: rgb(151, 149, 149);
 }
-
-
-
-
+input{
+  text-align: center;
+}
   /* /////////////// FEATURES GRID /////////////////// */
 .home-header-container {
     max-width: 1218px;
@@ -314,13 +313,61 @@ body {
   max-height: 500px;
   padding: 20px;
   margin: 20px;
-
+}
+.LineChartHolder {
+  width: 1000px;
+  max-height: 1000px;
+  padding: 20px;
+  margin: 20px;
 }
 .dashButton {
   transition: 0.3s;
 }
 .dashButton:hover {
   color: #8248f6;
+}
+.lineChartButton {
+  border: none;
+  transition: 0.3s;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 10px;
+  font-family: var(--strong-font);
+  background-color: #8248f6;
+}
+.lineChartButton:hover {
+  background:rgb(255, 99, 132)
+}
+.lineChartButtonActive {
+  border: none;
+  transition: 0.3s;
+  color: white;
+  padding: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 10px;
+  font-family: var(--strong-font);
+  background-color: rgb(99, 112, 255);
+}
+.forcastingText {
+  line-height: 170%;
+  margin: 15px;
+  color: rgb(181, 181, 181);
+  font-family: var(--med-font);
+}
+
+.forcastingText span{
+  margin: 3px;
+  font-size: 110%;
+  color: white;
+  border-bottom: #6824ef 2px solid;
 }
 .spacer {
   height: 60px;

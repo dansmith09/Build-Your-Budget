@@ -6,6 +6,7 @@ import DoughnutChart from '../../charts/DoughnutChart'
 import BarChart from '../../charts/BarChart'
 import { CiEdit } from 'react-icons/ci'
 import { MdDelete } from 'react-icons/md'
+import LineChart from '../../charts/LineChart';
 
 function AddExpense(props) {
     const [userData, setUserData] = useState({});
@@ -281,6 +282,15 @@ function AddExpense(props) {
                 <div className="BarChartHolder">
                     <h2 className='chartTitle'> Income Breakdown </h2>
                     <BarChart />
+                </div>
+                )
+                : ''}
+                <div className='spacer'></div>
+                {(totalIncomes.length !== 0 && totalExpenses.length !== 0) ?
+                ( 
+                <div className="LineChartHolder">
+                    <h2 className='chartTitle'>Savings Vs Investing Forecasting</h2>
+                    <LineChart />
                 </div>
                 )
                 : ''}

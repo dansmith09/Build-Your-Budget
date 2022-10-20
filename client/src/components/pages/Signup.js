@@ -48,7 +48,7 @@ function Signup(props) {
           <div className="form-group">
             <label htmlFor="email"></label>
             <input
-              placeholder="@"
+              placeholder="email"
               name="email"
               type="email"
               id="email"
