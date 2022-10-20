@@ -210,7 +210,6 @@ body {
   justify-content: center;
   font-family: var(--strong-font)
 }
-
 .dashboard-card {
   flex: 0 1 25%;
   width: 200px;
@@ -227,19 +226,31 @@ body {
   font-weight: 300;
 }
 .dashboard-card-content {
+  display: flex;
   color: rgb(181, 181, 181);
 }
 
+.chartsDashboardContainer{
+  width: 34%;
+  text-align: center;
+  align-items: center;
+}
+.chartTitle {
+  font-family: var(--med-font);
+  margin-bottom: 20px;
+  color: var(--main-text);
+}
+.DoughnutChartHolder, .BarChartHolder{
+  padding: 20px;
+}
 /* /////////////////////////////////////////////////////////////// */
 /* ////////////////////////// CHARTS STYLING //////////////////// */
 /* ///////////////////////////////////////////////////////////// */
 .DoughnutChartHolder {
   max-width: 500px;
-  width: 100vw;
 }
 .BarChartHolder {
   max-width: 500px;
-  width: 100vw; /* for when on phone size */
 }
 
 /* /////////////////////////////////////////////////////////////// */

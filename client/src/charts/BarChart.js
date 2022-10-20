@@ -59,6 +59,14 @@ const BarChart = () => {
   };
 
   const options = {
+    scales: {
+      y: {
+        ticks: { color: 'white' }
+      },
+      x: {
+        ticks: { color: 'white' }
+      }
+    },
     indexAxis: 'y',
     elements: {
       bar: {
@@ -68,6 +76,9 @@ const BarChart = () => {
     responsive: true,
     plugins: {
       legend: {
+        labels: {
+          fontColor: 'white'
+        },
         display: false
       },
       title: {

@@ -4,6 +4,8 @@ import { ADD_EXPENSE, ADD_INCOME } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
 import DoughnutChart from '../../charts/DoughnutChart'
 import BarChart from '../../charts/BarChart'
+import { CiEdit } from 'react-icons/ci'
+import { MdDelete } from 'react-icons/md'
 
 function AddExpense(props) {
     const [userData, setUserData] = useState({});
@@ -184,6 +186,9 @@ function AddExpense(props) {
                             return (
                                 <div className='dashboard-card-content'>
                                     <p>{expense.name} : ${expense.cost}</p>
+                                    <CiEdit
+                                        onClick={() => console.log('edit Button')} />
+                                    <MdDelete />
                                 </div>
                             ) 
                         })}
