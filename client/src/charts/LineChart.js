@@ -99,11 +99,6 @@ const LineChart = () => {
 
     return (
     <div>
-        <button className={weeksToSimulate === 52 ? 'lineChartButtonActive' : 'lineChartButton'} onClick={() => handleButtonClick(1)}> 1 Year </button>
-        <button className={weeksToSimulate === 260 ? 'lineChartButtonActive' : 'lineChartButton'} onClick={() => handleButtonClick(5)}> 5 Year </button>
-        <button className={weeksToSimulate === 520 ? 'lineChartButtonActive' : 'lineChartButton'} onClick={() => handleButtonClick(10)}> 10 Year </button>
-        <button className={weeksToSimulate === 1040 ? 'lineChartButtonActive' : 'lineChartButton'} onClick={() => handleButtonClick(20)}> 20 Year </button>
-        <button className={weeksToSimulate === 2080 ? 'lineChartButtonActive' : 'lineChartButton'} onClick={() => handleButtonClick(40)}> 40 Year </button>
         <Line
             data={chartData}
             options={{
@@ -127,6 +122,11 @@ const LineChart = () => {
                 },
             }}
         />
+        <button className={weeksToSimulate === 52 ? 'lineChartButtonActive' : 'lineChartButton'} onClick={() => handleButtonClick(1)}> 1 Year </button>
+        <button className={weeksToSimulate === 260 ? 'lineChartButtonActive' : 'lineChartButton'} onClick={() => handleButtonClick(5)}> 5 Year </button>
+        <button className={weeksToSimulate === 520 ? 'lineChartButtonActive' : 'lineChartButton'} onClick={() => handleButtonClick(10)}> 10 Year </button>
+        <button className={weeksToSimulate === 1040 ? 'lineChartButtonActive' : 'lineChartButton'} onClick={() => handleButtonClick(20)}> 20 Year </button>
+        <button className={weeksToSimulate === 2080 ? 'lineChartButtonActive' : 'lineChartButton'} onClick={() => handleButtonClick(40)}> 40 Year </button>
         {savingsData && investingData ?
             <h3 className='forcastingText'>
                 Over a time period of <span>{weeksToSimulate / 52}</span> years, assuming a <span>6.6%</span> market return per anum
