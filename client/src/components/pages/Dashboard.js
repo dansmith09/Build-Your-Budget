@@ -58,7 +58,11 @@ function AddExpense(props) {
         } catch (err) {
             console.log(err)
         }
-        
+
+        setExpenseState({
+            name: '',
+            cost: '',
+        })
     }
 
 
@@ -144,7 +148,7 @@ function AddExpense(props) {
                                 id="name" 
                                 name="name" 
                                 placeholder="income"
-                                
+                                value={incomeState.name}
                             >
                             </input>
                         </div>
@@ -157,7 +161,7 @@ function AddExpense(props) {
                                 id="amount" 
                                 name="amount" 
                                 placeholder="amount"
-                                
+                                value={incomeState.amount}
                             >
                             </input>
                         </div>
@@ -178,8 +182,7 @@ function AddExpense(props) {
                                 id="name" 
                                 name="name" 
                                 placeholder="expense"
-                                
-
+                                value={expenseState.name}
                             >
                             </input>
                         </div>
@@ -192,7 +195,7 @@ function AddExpense(props) {
                                 id="cost" 
                                 name="cost" 
                                 placeholder="cost"
-                                
+                                value={expenseState.cost}
                             >
                             </input>
                         </div>
