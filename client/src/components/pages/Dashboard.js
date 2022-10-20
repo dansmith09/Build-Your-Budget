@@ -58,6 +58,7 @@ function AddExpense(props) {
         } catch (err) {
             console.log(err)
         }
+        
     }
 
 
@@ -143,6 +144,7 @@ function AddExpense(props) {
                                 id="name" 
                                 name="name" 
                                 placeholder="income"
+                                
                             >
                             </input>
                         </div>
@@ -155,6 +157,7 @@ function AddExpense(props) {
                                 id="amount" 
                                 name="amount" 
                                 placeholder="amount"
+                                
                             >
                             </input>
                         </div>
@@ -175,6 +178,8 @@ function AddExpense(props) {
                                 id="name" 
                                 name="name" 
                                 placeholder="expense"
+                                
+
                             >
                             </input>
                         </div>
@@ -187,6 +192,7 @@ function AddExpense(props) {
                                 id="cost" 
                                 name="cost" 
                                 placeholder="cost"
+                                
                             >
                             </input>
                         </div>
