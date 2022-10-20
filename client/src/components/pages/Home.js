@@ -16,47 +16,38 @@ export default function Home(){
                 <div className='container'>
                     <div className='cards'>
                         <div className='card-content'>
-                            <h3>Detailed Breakdowns</h3>
-                            <p>Automated data breakdowns for visualising your expenses and disposable income
+                            <h3>Data</h3>
+                            <p>Automated data conversion for easy readability
                             </p>
                         </div>
                     </div>
                     <div className='cards'>
                         <div className='card-content'>
-                            <h3>Header</h3>
-                            <p>This is some test content
+                            <h3>Tracking</h3>
+                                <p>Monitor and keep an accurate record of your income and spending on a daily basis</p>
+                        </div>
+                    </div>
+                    <div className='cards'>
+                        <div className='break-section'></div>
+                        <div className='card-content'>
+                            <h3>Access</h3>
+                            <p>Access your profile from all devices and locations
                             </p>
                         </div>
                     </div>
                     <div className='cards'>
                         <div className='break-section'></div>
                         <div className='card-content'>
-                            <h3>Header</h3>
-                            <p>This is some test content
+                            <h3>Breakdown</h3>
+                            <p>Expand the utility of your assets by viewing where you are spending and saving
                             </p>
                         </div>
                     </div>
                     <div className='cards'>
                         <div className='break-section'></div>
                         <div className='card-content'>
-                            <h3>Header</h3>
-                            <p>This is some test content
-                            </p>
-                        </div>
-                    </div>
-                    <div className='cards'>
-                        <div className='break-section'></div>
-                        <div className='card-content'>
-                            <h3>Header</h3>
-                            <p>This is some test content
-                            </p>
-                        </div>
-                    </div>
-                    <div className='cards'>
-                        <div className='break-section'></div>
-                        <div className='card-content'>
-                            <h3>Header</h3>
-                            <p>This is some test content
+                            <h3>Premium</h3>
+                            <p>Unlock additional features by upgrading to premium
                             </p>
                         </div>
                     </div>
