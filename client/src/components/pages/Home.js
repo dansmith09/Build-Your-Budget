@@ -16,8 +16,8 @@ export default function Home(){
                 <div className='container'>
                     <div className='cards'>
                         <div className='card-content'>
-                            <h3>Header</h3>
-                            <p>This is some test content
+                            <h3>Detailed Breakdowns</h3>
+                            <p>Automated data breakdowns for visualising your expenses and disposable income
                             </p>
                         </div>
                     </div>

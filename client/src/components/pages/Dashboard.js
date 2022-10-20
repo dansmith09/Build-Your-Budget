@@ -191,8 +191,6 @@ function AddExpense(props) {
                     </div>
                 </div>
             </section>
-
-            </div>
             <div>
                 <p> Disposable income : {totalIncomes - totalExpenses} </p>
             </div>
