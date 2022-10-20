@@ -27,6 +27,7 @@
     "chart.js": "^3.9.1",
     "chartjs-plugin-streaming": "^2.0.0",
     "gh-pages": "^4.0.0",
-    "react-chartjs-2": "^4.3.1"
+    "react-chartjs-2": "^4.3.1",
+    "react-icons": "^4.6.0"
   }
 }
