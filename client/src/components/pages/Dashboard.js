@@ -346,7 +346,6 @@ function AddExpense(props) {
                                         closeModal('income')
                                     }}
                                     >Save</button>
-                                    <p>Test content in modal</p>
                                 </div>
                             </div>
                         </div>
@@ -423,7 +422,6 @@ function AddExpense(props) {
                                         closeModal('expense')
                                     }}
                                     >Save</button>
-                                    <p>Test content in modal</p>
                                 </div>
                             </div>
                         </div>
