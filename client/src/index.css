@@ -189,10 +189,6 @@ input{
   background-size: contain;
   background-position:center;
 }
-
-
-
-
 /* /////////////////////////////////////////////////////////////// */
 /* ////////////////////////// DASH STYLING ////////////////////// */
 /* ///////////////////////////////////////////////////////////// */
@@ -384,8 +380,29 @@ input{
   justify-content: center;
   text-align: center;
   margin-top: 100px;
+  margin-bottom: 100px;
+
   color: var(--main-text);
   font-family: var(--med-font);
+}
+.donate-button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10%;
+}
+.donate-button {
+  width: 100px;
+  height: 75px;
+  font-size: 20px;
+  background: var(--input-bg);
+  color: var(--main-text);
+  border: 0.25px solid var(--active-text);
+  cursor: pointer;
+  margin: 10px;
+}
+.donate-button:hover {
+  background-color: var(--active-text);
 }
 /* /////////////////////////////////////////////////////////////// */
 /* ////////////////////////// LOGIN STYLING ///////////////////// */

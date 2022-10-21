@@ -29,34 +29,41 @@ export default function Donate() {
         <div>
             <div className='donate-header-container'>
                 <h1 className='donate-header'>This will be the donation page</h1>
-                <p>Donate to unlock addition features.</p>
+                <p>Donate to unlock additional features.</p>
             </div>
-            <button
-            onClick={() => stripeDonate(1)}
-             id="button">
-                5
-            </button>
-            <button
-            onClick={() => stripeDonate(2)}
-             id="button">
-                10
-            </button>
-            <button
-            onClick={() => stripeDonate(3)}
-             id="button">
-               20
-            </button>
-            <button
-            onClick={() => stripeDonate(4)}
-             id="button">
-               50
-            </button>
+            <div className='donate-button-container'>
+                <button
+                className='donate-button'
+                onClick={() => stripeDonate(1)}
+                id="button">
+                    5
+                </button>
+                <button
+                className='donate-button'
+                onClick={() => stripeDonate(2)}
+                id="button">
+                    10
+                </button>
+                <button
+                className='donate-button'
+                onClick={() => stripeDonate(3)}
+                id="button">
+                20
+                </button>
+                <button
+                className='donate-button'
+                onClick={() => stripeDonate(4)}
+                id="button">
+                50
+                </button>               
+                <button
+                className='donate-button'
+                onClick={() => stripeDonate(5)}
+                id="button">
+                    100
+                </button>
+            </div>
             
-            <button
-            onClick={() => stripeDonate(5)}
-             id="button">
-                100
-            </button>
         </div>
     )
 }
