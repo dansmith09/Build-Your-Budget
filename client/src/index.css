@@ -379,17 +379,26 @@ input{
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 150px;
   margin-bottom: 100px;
-
   color: var(--main-text);
   font-family: var(--med-font);
+}
+.donate-header-container div:first-child {
+  font-size: 20px;
+}
+.donate-header-content {
+  display: flex;
+  width: 500px;
+  justify-content: center;
+  margin:auto;
+  padding: 50px;
 }
 .donate-button-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 10%;
+  margin-top: 40px;
 }
 .donate-button {
   width: 100px;

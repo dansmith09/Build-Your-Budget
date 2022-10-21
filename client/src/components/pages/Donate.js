@@ -28,8 +28,13 @@ export default function Donate() {
     return (
         <div>
             <div className='donate-header-container'>
-                <h1 className='donate-header'>This will be the donation page</h1>
-                <p>Donate to unlock additional features.</p>
+                <div>
+                    <p>By supporting Expense, you are allowing us to continute developing this application.</p>
+                </div>
+                <div>
+                    <p className='donate-header-content'>Want a 10% discount? Donate via crypto!</p>
+                </div>
+                
             </div>
             <div className='donate-button-container'>
                 <button
