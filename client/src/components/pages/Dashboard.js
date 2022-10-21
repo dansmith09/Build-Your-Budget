@@ -175,7 +175,6 @@ function AddExpense(props) {
                 }
             },
           });
-          console.log(data)
         } catch (err) {
           console.error(err);
         }
