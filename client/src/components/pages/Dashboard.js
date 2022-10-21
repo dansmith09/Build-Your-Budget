@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import { ADD_EXPENSE, ADD_INCOME, REMOVE_EXPENSE, REMOVE_INCOME } from '../../utils/mutations';
+import { ADD_EXPENSE, ADD_INCOME, REMOVE_EXPENSE, REMOVE_INCOME, UPDATE_EXPENSE, UPDATE_INCOME  } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
 import DoughnutChart from '../../charts/DoughnutChart'
 import BarChart from '../../charts/BarChart'
@@ -16,7 +16,13 @@ function AddExpense(props) {
     // Income state
     const [incomeState, setIncomeState] = useState({ name: '', amount: '' });
     const [addIncome, { err }] = useMutation(ADD_INCOME);
-    
+    // Edit Income State
+    const [editIncome, setEditIncome] = useState({ name: '', amount: ''})
+    const [updateIncome, { updateIncomeError }] = useMutation(UPDATE_INCOME)
+    // Edit Expense State
+    const [editExpense, setEditExpense] = useState({ name: '', cost: ''})
+    const [updateExpense, { updateExpenseError }] = useMutation(UPDATE_EXPENSE)
+    // Logged in User query
     const { loading, data} = useQuery(QUERY_ME);
     // Expense data to render
     const expenseList = data?.me.expenses || [];
@@ -27,6 +33,29 @@ function AddExpense(props) {
     // Remove Income
     const [removeExpense, { deletExpenseError }] = useMutation(REMOVE_EXPENSE)
     const [removeIncome, { deletIncomeError }] = useMutation(REMOVE_INCOME)
+    // Display/hide modal state
+    const [displayIncomeModal, setDisplayIncomeModal] = useState(false)
+
+    const [displayExpenseModal, setDisplayExpenseModal] = useState(false)
+
+
+    const renderModal = (modalType) => {
+        // event.preventDefault();
+        // console.log(event.target);
+        if  ( modalType === 'income') {
+            setDisplayIncomeModal(true);
+            return;
+        }
+        setDisplayExpenseModal(true);
+    };
+    const closeModal = (modalType) => {
+        // event.preventDefault();
+        if  ( modalType === 'income') {
+            setDisplayIncomeModal(false);
+            return;
+        }
+        setDisplayExpenseModal(false);
+    }
 
     useEffect(() => {
         if (data) {
@@ -76,6 +105,7 @@ function AddExpense(props) {
         setIncomeState({...incomeState, [name]: value});
         
     }
+    
 
     const handleIncomeFormSubmit = async (event) => {
         event.preventDefault();
@@ -99,7 +129,7 @@ function AddExpense(props) {
             amount: '',
         })
     }
-
+    // REMOVE MUTATION
      const handleRemoveExpense = async (expenseId) => {
         console.log(expenseId)
         try {
@@ -127,6 +157,52 @@ function AddExpense(props) {
            console.error(err);
          }
        };
+    //  EDIT MUTATION
+    const handleEditIncomeChange = (event) => {
+        const { name, value} = event.target;
+        setEditIncome({...editIncome, [name]: value});
+        
+    }
+    const handleEditIncomeFormSubmit = async () => {
+        try {
+          const { data } = await updateIncome({
+            variables: {
+                userId: userData.me._id,
+                incomeId: editIncome._id,
+                newIncomeData: {
+                  name: editIncome.name,
+                  amount: parseFloat(editIncome.amount),
+                }
+            },
+          });
+          console.log(data)
+        } catch (err) {
+          console.error(err);
+        }
+      };
+    const handleEditExpenseChange = (event) => {
+        const { name, value} = event.target;
+        setEditExpense({...editExpense, [name]: value});
+        
+    }
+    const handleEditExpenseFormSubmit = async () => {
+        try {
+          const { data } = await updateExpense({
+            variables: {
+                userId: userData.me._id,
+                expenseId: editExpense._id,
+                newExpenseData: {
+                  name: editExpense.name,
+                  cost: parseFloat(editExpense.cost),
+                }
+            },
+          });
+          console.log(data)
+        } catch (err) {
+          console.error(err);
+        }
+      };
+    
 
 
     return (
@@ -216,8 +292,14 @@ function AddExpense(props) {
                                 className='dashboard-card-content'>
                                 <CiEdit
                                     className='dashButton'
-                                    // onClick={() => handleEditincome(income._id)}
+                                    onClick={() => {
+                                        renderModal('income')
+                                        setEditIncome(income)
+                                    }
+                                }
+                                    
                                 />
+                                
                                     <p>{income.name} : ${income.amount}</p>
                                         <MdDelete
                                             className='dashButton'
@@ -226,6 +308,48 @@ function AddExpense(props) {
                                 </div>
                             ) 
                         })}
+                        <div>
+                            <div id='myModal'>
+                                <div className={displayIncomeModal ? 'openModal' : 'closeModal'}>
+                                    <form>
+                                        <div>
+                                        <label htmlFor="name"></label>
+                                            <input
+                                                className='form-input'
+                                                onChange={handleEditIncomeChange}
+                                                type="text" 
+                                                id="name" 
+                                                name="name" 
+                                                placeholder="income"
+                                                value={editIncome.name}
+                                            >
+                                            </input>
+                                        </div>
+                                        <div>
+                                        <label htmlFor="amount"></label>
+                                            <input 
+                                                className='form-input'
+                                                onChange={handleEditIncomeChange}
+                                                type="text" 
+                                                id="amount" 
+                                                name="amount" 
+                                                placeholder="amount"
+                                                value={editIncome.amount}
+                                            >
+                                            </input>
+                                        </div>
+                                    </form>
+                                    <button
+                                    className='close-modal'
+                                    onClick={() => {
+                                        handleEditIncomeFormSubmit()
+                                        closeModal('income')
+                                    }}
+                                    >Save</button>
+                                    <p>Test content in modal</p>
+                                </div>
+                            </div>
+                        </div>
                         {incomeList.length > 0 ?
                             (   
                                 <>
@@ -247,7 +371,11 @@ function AddExpense(props) {
                                 className='dashboard-card-content'>
                                 <CiEdit
                                     className='dashButton'
-                                    // onClick={() => handleEditExpense(expense._id)}
+                                    onClick={() => {
+                                        renderModal('expense')
+                                        setEditExpense(expense)
+                                    }
+                                } 
                                 />
                                     <p>{expense.name} : ${expense.cost}</p>
                                         <MdDelete
@@ -257,6 +385,48 @@ function AddExpense(props) {
                                 </div>
                             ) 
                         })}
+                        <div>
+                            <div id='myModal'>
+                                <div className={displayExpenseModal ? 'openModal' : 'closeModal'}>
+                                    <form>
+                                        <div>
+                                        <label htmlFor="name"></label>
+                                            <input
+                                                className='form-input'
+                                                onChange={handleEditExpenseChange}
+                                                type="text" 
+                                                id="name" 
+                                                name="name" 
+                                                placeholder="expense"
+                                                value={editExpense.name}
+                                            >
+                                            </input>
+                                        </div>
+                                        <div>
+                                        <label htmlFor="cost"></label>
+                                            <input 
+                                                className='form-input'
+                                                onChange={handleEditExpenseChange}
+                                                type="text" 
+                                                id="cost" 
+                                                name="cost" 
+                                                placeholder="cost"
+                                                value={editExpense.cost}
+                                            >
+                                            </input>
+                                        </div>
+                                    </form>
+                                    <button
+                                    className='close-modal'
+                                    onClick={() => {
+                                        handleEditExpenseFormSubmit()
+                                        closeModal('expense')
+                                    }}
+                                    >Save</button>
+                                    <p>Test content in modal</p>
+                                </div>
+                            </div>
+                        </div>
                         {totalExpenses > 0 ?
                             (
                                 <p className='boldTotal'> Total: ${totalExpenses}</p>
@@ -296,6 +466,9 @@ function AddExpense(props) {
                 : ''}
             </section>
             <div className='spacer'></div>
+            <div>
+                
+            </div>
         </div>
     )
 }

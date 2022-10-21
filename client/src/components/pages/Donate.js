@@ -41,31 +41,31 @@ export default function Donate() {
                 className='donate-button'
                 onClick={() => stripeDonate(1)}
                 id="button">
-                    5
+                    $5
                 </button>
                 <button
                 className='donate-button'
                 onClick={() => stripeDonate(2)}
                 id="button">
-                    10
+                    $10
                 </button>
                 <button
                 className='donate-button'
                 onClick={() => stripeDonate(3)}
                 id="button">
-                20
+                    $20
                 </button>
                 <button
                 className='donate-button'
                 onClick={() => stripeDonate(4)}
                 id="button">
-                50
+                    $50
                 </button>               
                 <button
                 className='donate-button'
                 onClick={() => stripeDonate(5)}
                 id="button">
-                    100
+                    $100
                 </button>
             </div>
             
