@@ -41,7 +41,7 @@ export default function Home(){
                         <div className='break-section'></div>
                         <div className='card-content'>
                             <h3>Access</h3>
-                            <p>Access your profile from all devices and locations
+                            <p>Access your dashboard from all devices and locations
                             </p>
                         </div>
                     </div>
