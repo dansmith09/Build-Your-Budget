@@ -235,11 +235,20 @@ input{
   color: rgb(181, 181, 181);
 }
 .input-button {
-  background: var(--active-text);
-  border: none;
   cursor: pointer;
-  width: 40px;
-  color: rgb(181, 181, 181);
+  border: 0;
+  border-radius: 4px;
+  font-weight: 600;
+  width: 100px;
+  padding: 5px 0;
+  background: var(--input-bg);
+  color: #FFF;
+  transition: 0.4s;
+}
+.input-button:hover {
+  color: white;
+  box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
+  background-color: rgba(104, 85, 224, 1);
 }
 .dashboard-cards {
   display: flex;
@@ -287,12 +296,17 @@ input{
   font-weight: 500;
   font-size: larger;
 }
+.dashboard-modal {
+  margin-top: 20px;
+  margin-bottom: 20px
+}
 
 /* /////////// MODAL STYLING ///////*/
 .openModal {
   display: block
 }
 .closeModal {
+  margin: 20px;
   display: none;
 }
 
