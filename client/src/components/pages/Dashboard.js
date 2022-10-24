@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Auth from '../../utils/auth'
 import { useMutation, useQuery } from '@apollo/client';
 import { ADD_EXPENSE, ADD_INCOME, REMOVE_EXPENSE, REMOVE_INCOME, UPDATE_EXPENSE, UPDATE_INCOME  } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
@@ -203,275 +204,284 @@ function AddExpense(props) {
       };
     
 
-
-    return (
-        <div>
-            <div className='dash-header-container'>
-                <h1 className='dash-header'>Expense Planner</h1>
-            </div>
-            <section className='dash-form-container'>
-            <div className='dashboard-container'>
-                    <form onSubmit={handleIncomeFormSubmit}>
-                        <div>
-                            <p className='form-head'> Add an Income</p>
+        if (Auth.loggedIn()) {
+            return (
+                <div>
+                    <div className='dash-header-container'>
+                        <h1 className='dash-header'>Expense Planner</h1>
+                    </div>
+                    <section className='dash-form-container'>
+                    <div className='dashboard-container'>
+                            <form onSubmit={handleIncomeFormSubmit}>
+                                <div>
+                                    <p className='form-head'> Add an Income</p>
+                                </div>
+                                <div>
+                                <label htmlFor="name"></label>
+                                    <input
+                                        className='form-input'
+                                        onChange={handleIncomeChange}
+                                        type="text" 
+                                        id="name" 
+                                        name="name" 
+                                        placeholder="income"
+                                        value={incomeState.name}
+                                    >
+                                    </input>
+                                </div>
+                                <div>
+                                <label htmlFor="amount"></label>
+                                    <input
+                                        className='form-input'
+                                        onChange={handleIncomeChange}
+                                        type="text" 
+                                        id="amount" 
+                                        name="amount" 
+                                        placeholder="amount"
+                                        value={incomeState.amount}
+                                    >
+                                    </input>
+                                </div>
+                            <button className='input-button' type="submit">add</button>
+                        </form>
+                    </div>
+                        <div className='dashboard-container'>
+                            <form onSubmit={handleExpenseFormSubmit}>
+                                <div className='form-head'>
+                                    <p> Add an Expense</p>
+                                </div>
+                                <div>
+                                <label htmlFor="name"></label>
+                                    <input
+                                        className='form-input'
+                                        onChange={handleExpenseChange}
+                                        type="text" 
+                                        id="name" 
+                                        name="name" 
+                                        placeholder="expense"
+                                        value={expenseState.name}
+                                    >
+                                    </input>
+                                </div>
+                                <div>
+                                <label htmlFor="cost"></label>
+                                    <input 
+                                        className='form-input'
+                                        onChange={handleExpenseChange}
+                                        type="text" 
+                                        id="cost" 
+                                        name="cost" 
+                                        placeholder="cost"
+                                        value={expenseState.cost}
+                                    >
+                                    </input>
+                                </div>
+                                <button className='input-button' type="submit">add</button>
+                            </form>
                         </div>
-                        <div>
-                        <label htmlFor="name"></label>
-                            <input
-                                className='form-input'
-                                onChange={handleIncomeChange}
-                                type="text" 
-                                id="name" 
-                                name="name" 
-                                placeholder="income"
-                                value={incomeState.name}
-                            >
-                            </input>
-                        </div>
-                        <div>
-                        <label htmlFor="amount"></label>
-                            <input
-                                className='form-input'
-                                onChange={handleIncomeChange}
-                                type="text" 
-                                id="amount" 
-                                name="amount" 
-                                placeholder="amount"
-                                value={incomeState.amount}
-                            >
-                            </input>
-                        </div>
-                    <button className='input-button' type="submit">add</button>
-                </form>
-            </div>
-                <div className='dashboard-container'>
-                    <form onSubmit={handleExpenseFormSubmit}>
-                        <div className='form-head'>
-                            <p> Add an Expense</p>
-                        </div>
-                        <div>
-                        <label htmlFor="name"></label>
-                            <input
-                                className='form-input'
-                                onChange={handleExpenseChange}
-                                type="text" 
-                                id="name" 
-                                name="name" 
-                                placeholder="expense"
-                                value={expenseState.name}
-                            >
-                            </input>
-                        </div>
-                        <div>
-                        <label htmlFor="cost"></label>
-                            <input 
-                                className='form-input'
-                                onChange={handleExpenseChange}
-                                type="text" 
-                                id="cost" 
-                                name="cost" 
-                                placeholder="cost"
-                                value={expenseState.cost}
-                            >
-                            </input>
-                        </div>
-                        <button className='input-button' type="submit">add</button>
-                    </form>
-                </div>
-            </section>
-            <section>
-                <div className='dashboard-cards'>
-                <div className='dashboard-card'>
-                    <h2 className='dashboard-card-header'> Income </h2>
-                    <br></br>
-                    {incomeList.map((income) => {
-                            return (
-                                <div
-                                key={`${income._id}`}
-                                className='dashboard-card-content'>
-                                <CiEdit
-                                    className='dashButton'
-                                    onClick={() => {
-                                        renderModal('income')
-                                        setEditIncome(income)
-                                    }
+                    </section>
+                    <section>
+                        <div className='dashboard-cards'>
+                        <div className='dashboard-card'>
+                            <h2 className='dashboard-card-header'> Income </h2>
+                            <br></br>
+                            {incomeList.map((income) => {
+                                    return (
+                                        <div
+                                        key={`${income._id}`}
+                                        className='dashboard-card-content'>
+                                        <CiEdit
+                                            className='dashButton'
+                                            onClick={() => {
+                                                renderModal('income')
+                                                setEditIncome(income)
+                                            }
+                                        }
+                                            
+                                        />
+                                        
+                                            <p>{income.name} : ${income.amount}</p>
+                                                <MdDelete
+                                                    className='dashButton'
+                                                    onClick={() => handleRemoveIncome(income._id)}
+                                                />
+                                        </div>
+                                    ) 
+                                })}
+                                <div>
+                                    <div 
+                                    className='dashboard-modal'
+                                    id='myModal'>
+                                        <div className={displayIncomeModal ? 'openModal' : 'closeModal'}>
+                                            <form>
+                                                <div>
+                                                <label htmlFor="name"></label>
+                                                    <input
+                                                        className='form-input'
+                                                        onChange={handleEditIncomeChange}
+                                                        type="text" 
+                                                        id="name" 
+                                                        name="name" 
+                                                        placeholder="income"
+                                                        value={editIncome.name}
+                                                    >
+                                                    </input>
+                                                </div>
+                                                <div>
+                                                <label htmlFor="amount"></label>
+                                                    <input 
+                                                        className='form-input'
+                                                        onChange={handleEditIncomeChange}
+                                                        type="text" 
+                                                        id="amount" 
+                                                        name="amount" 
+                                                        placeholder="amount"
+                                                        value={editIncome.amount}
+                                                    >
+                                                    </input>
+                                                </div>
+                                            </form>
+                                            <button
+                                            className='close-modal signupBtn'
+                                            onClick={() => {
+                                                handleEditIncomeFormSubmit()
+                                                closeModal('income')
+                                            }}
+                                            >Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                {incomeList.length > 0 ?
+                                    (   
+                                        <>
+                                            <p className='boldTotal'> Total: ${totalIncomes}</p>
+                                            <p className='boldTotal'> Disposable income : ${totalIncomes - totalExpenses} </p>
+                                        </>
+                                    ) : 
+                                    (
+                                        <p className='boldTotal'>No Income Added</p> 
+                                    )
                                 }
-                                    
-                                />
-                                
-                                    <p>{income.name} : ${income.amount}</p>
-                                        <MdDelete
+                            </div>
+                            <div className='dashboard-card'>
+                                <h2 className='dashboard-card-header'> Expenses </h2>
+                                {expenseList.map((expense) => {
+                                    return (
+                                        <div
+                                        key={`${expense._id}`}
+                                        className='dashboard-card-content'>
+                                        <CiEdit
                                             className='dashButton'
-                                            onClick={() => handleRemoveIncome(income._id)}
+                                            onClick={() => {
+                                                renderModal('expense')
+                                                setEditExpense(expense)
+                                            }
+                                        } 
                                         />
-                                </div>
-                            ) 
-                        })}
-                        <div>
-                            <div 
-                            className='dashboard-modal'
-                            id='myModal'>
-                                <div className={displayIncomeModal ? 'openModal' : 'closeModal'}>
-                                    <form>
-                                        <div>
-                                        <label htmlFor="name"></label>
-                                            <input
-                                                className='form-input'
-                                                onChange={handleEditIncomeChange}
-                                                type="text" 
-                                                id="name" 
-                                                name="name" 
-                                                placeholder="income"
-                                                value={editIncome.name}
-                                            >
-                                            </input>
+                                            <p>{expense.name} : ${expense.cost}</p>
+                                                <MdDelete
+                                                    className='dashButton'
+                                                    onClick={() => handleRemoveExpense(expense._id)}
+                                                />
                                         </div>
-                                        <div>
-                                        <label htmlFor="amount"></label>
-                                            <input 
-                                                className='form-input'
-                                                onChange={handleEditIncomeChange}
-                                                type="text" 
-                                                id="amount" 
-                                                name="amount" 
-                                                placeholder="amount"
-                                                value={editIncome.amount}
-                                            >
-                                            </input>
+                                    ) 
+                                })}
+                                <div>
+                                    <div 
+                                    className='dashboard-modal'
+                                    id='myModal'>
+                                        <div className={displayExpenseModal ? 'openModal' : 'closeModal'}>
+                                            <form>
+                                                <div>
+                                                <label htmlFor="name"></label>
+                                                    <input
+                                                        className='form-input'
+                                                        onChange={handleEditExpenseChange}
+                                                        type="text" 
+                                                        id="name" 
+                                                        name="name" 
+                                                        placeholder="expense"
+                                                        value={editExpense.name}
+                                                    >
+                                                    </input>
+                                                </div>
+                                                <div>
+                                                <label htmlFor="cost"></label>
+                                                    <input 
+                                                        className='form-input'
+                                                        onChange={handleEditExpenseChange}
+                                                        type="text" 
+                                                        id="cost" 
+                                                        name="cost" 
+                                                        placeholder="cost"
+                                                        value={editExpense.cost}
+                                                    >
+                                                    </input>
+                                                </div>
+                                            </form>
+                                            <button
+                                            className='close-modal signupBtn'
+                                            onClick={() => {
+                                                handleEditExpenseFormSubmit()
+                                                closeModal('expense')
+                                            }}
+                                            >Save</button>
                                         </div>
-                                    </form>
-                                    <button
-                                    className='close-modal signupBtn'
-                                    onClick={() => {
-                                        handleEditIncomeFormSubmit()
-                                        closeModal('income')
-                                    }}
-                                    >Save</button>
+                                    </div>
                                 </div>
+                                {totalExpenses > 0 ?
+                                    (
+                                        <p className='boldTotal'> Total: ${totalExpenses}</p>
+                                    ) :
+                                    (
+                                        <p className='boldTotal'>No Expenses Added</p> 
+                                    )
+                                }
                             </div>
                         </div>
-                        {incomeList.length > 0 ?
-                            (   
-                                <>
-                                    <p className='boldTotal'> Total: ${totalIncomes}</p>
-                                    <p className='boldTotal'> Disposable income : ${totalIncomes - totalExpenses} </p>
-                                </>
-                            ) : 
-                            (
-                                <p className='boldTotal'>No Income Added</p> 
-                            )
-                        }
-                    </div>
-                    <div className='dashboard-card'>
-                        <h2 className='dashboard-card-header'> Expenses </h2>
-                        {expenseList.map((expense) => {
-                            return (
-                                <div
-                                key={`${expense._id}`}
-                                className='dashboard-card-content'>
-                                <CiEdit
-                                    className='dashButton'
-                                    onClick={() => {
-                                        renderModal('expense')
-                                        setEditExpense(expense)
-                                    }
-                                } 
-                                />
-                                    <p>{expense.name} : ${expense.cost}</p>
-                                        <MdDelete
-                                            className='dashButton'
-                                            onClick={() => handleRemoveExpense(expense._id)}
-                                        />
-                                </div>
-                            ) 
-                        })}
-                        <div>
-                            <div 
-                            className='dashboard-modal'
-                            id='myModal'>
-                                <div className={displayExpenseModal ? 'openModal' : 'closeModal'}>
-                                    <form>
-                                        <div>
-                                        <label htmlFor="name"></label>
-                                            <input
-                                                className='form-input'
-                                                onChange={handleEditExpenseChange}
-                                                type="text" 
-                                                id="name" 
-                                                name="name" 
-                                                placeholder="expense"
-                                                value={editExpense.name}
-                                            >
-                                            </input>
-                                        </div>
-                                        <div>
-                                        <label htmlFor="cost"></label>
-                                            <input 
-                                                className='form-input'
-                                                onChange={handleEditExpenseChange}
-                                                type="text" 
-                                                id="cost" 
-                                                name="cost" 
-                                                placeholder="cost"
-                                                value={editExpense.cost}
-                                            >
-                                            </input>
-                                        </div>
-                                    </form>
-                                    <button
-                                    className='close-modal signupBtn'
-                                    onClick={() => {
-                                        handleEditExpenseFormSubmit()
-                                        closeModal('expense')
-                                    }}
-                                    >Save</button>
-                                </div>
-                            </div>
+                    </section>
+                    <section className='chartsDashboardContainer'>
+                        {(totalExpenses.length !== 0 ) ?
+                        ( 
+                        <div className="DoughnutChartHolder">
+                            <h2 className='chartTitle'> Expenses Breakdown </h2>
+                            <DoughnutChart />
                         </div>
-                        {totalExpenses > 0 ?
-                            (
-                                <p className='boldTotal'> Total: ${totalExpenses}</p>
-                            ) :
-                            (
-                                <p className='boldTotal'>No Expenses Added</p> 
-                            )
-                        }
+                        )
+                        : ''}
+                        {(totalIncomes.length !== 0 ) ?
+                        ( 
+                        <div className="BarChartHolder">
+                            <h2 className='chartTitle'> Income Breakdown </h2>
+                            <BarChart />
+                        </div>
+                        )
+                        : ''}
+                        <div className='spacer'></div>
+                        {(totalIncomes.length !== 0 && totalExpenses.length !== 0) ?
+                        ( 
+                        <div className="LineChartHolder">
+                            <h2 className='chartTitle'>Savings Vs Investing Forecasting</h2>
+                            <LineChart />
+                        </div>
+                        )
+                        : ''}
+                    </section>
+                    <div className='spacer'></div>
+                    <div>
+                        
                     </div>
                 </div>
-            </section>
-            <section className='chartsDashboardContainer'>
-                {(totalExpenses.length !== 0 ) ?
-                ( 
-                <div className="DoughnutChartHolder">
-                    <h2 className='chartTitle'> Expenses Breakdown </h2>
-                    <DoughnutChart />
+            )
+        } else {
+            return (
+                <div className='home-header-container'>
+                  <h1>You need to be logged in to view this page.<br></br>
+                    <span className='card-section-header'>Please make an account or login</span>
+                  </h1>
                 </div>
-                )
-                : ''}
-                {(totalIncomes.length !== 0 ) ?
-                ( 
-                <div className="BarChartHolder">
-                    <h2 className='chartTitle'> Income Breakdown </h2>
-                    <BarChart />
-                </div>
-                )
-                : ''}
-                <div className='spacer'></div>
-                {(totalIncomes.length !== 0 && totalExpenses.length !== 0) ?
-                ( 
-                <div className="LineChartHolder">
-                    <h2 className='chartTitle'>Savings Vs Investing Forecasting</h2>
-                    <LineChart />
-                </div>
-                )
-                : ''}
-            </section>
-            <div className='spacer'></div>
-            <div>
-                
-            </div>
-        </div>
-    )
-}
+              )
+        }
+    }
 
 export default AddExpense;
