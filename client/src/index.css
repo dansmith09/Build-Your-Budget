@@ -243,7 +243,6 @@ input{
   padding: 5px 0;
   background: var(--input-bg);
   color: #FFF;
-  box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
   transition: 0.4s;
 }
 .input-button:hover {
