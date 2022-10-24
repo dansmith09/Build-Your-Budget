@@ -390,6 +390,8 @@ input{
   text-align: center;
   margin-top: 150px;
   margin-bottom: 100px;
+  margin-left: 50px;
+  margin-right: 50px;
   color: var(--main-text);
   font-family: var(--med-font);
 }
@@ -398,10 +400,10 @@ input{
 }
 .donate-header-content {
   display: flex;
-  width: 500px;
+  /* width: 500px; */
   justify-content: center;
   margin:auto;
-  padding: 50px;
+  padding-top: 50px;
 }
 .donate-button-container {
   display: flex;
