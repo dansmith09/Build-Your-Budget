@@ -132,6 +132,32 @@ Distributed under the MIT license. See MIT's [documentation](https://opensource.
 ## Acknowledgements
 
 
+- [Chart JS](https://www.chartjs.org/)
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [Stripe](https://stripe.com/au)
+- [Fonts Knowledge](https://fonts.google.com/knowledge)
+- [GitHub Pages](https://docs.github.com/en/pages)
+- [Shields.io](https://shields.io/)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 [contributors-shield]: https://img.shields.io/github/contributors/dansmith09/Build-Your-Budget.svg?style=for-the-badge
