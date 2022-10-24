@@ -48,7 +48,7 @@ app.post('/donation', async (req, res) => {
                     quantity: item.quantity
                 }
             }),
-            success_url: `${url}/dashboard`,
+            success_url: `${url}/thankyou`,
             cancel_url: `${url}/donate`,
         })
         res.json({ url: session.url})
