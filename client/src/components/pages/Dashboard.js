@@ -308,7 +308,9 @@ function AddExpense(props) {
                             ) 
                         })}
                         <div>
-                            <div id='myModal'>
+                            <div 
+                            className='dashboard-modal'
+                            id='myModal'>
                                 <div className={displayIncomeModal ? 'openModal' : 'closeModal'}>
                                     <form>
                                         <div>
@@ -339,7 +341,7 @@ function AddExpense(props) {
                                         </div>
                                     </form>
                                     <button
-                                    className='close-modal'
+                                    className='close-modal signupBtn'
                                     onClick={() => {
                                         handleEditIncomeFormSubmit()
                                         closeModal('income')
@@ -384,7 +386,9 @@ function AddExpense(props) {
                             ) 
                         })}
                         <div>
-                            <div id='myModal'>
+                            <div 
+                            className='dashboard-modal'
+                            id='myModal'>
                                 <div className={displayExpenseModal ? 'openModal' : 'closeModal'}>
                                     <form>
                                         <div>
@@ -415,7 +419,7 @@ function AddExpense(props) {
                                         </div>
                                     </form>
                                     <button
-                                    className='close-modal'
+                                    className='close-modal signupBtn'
                                     onClick={() => {
                                         handleEditExpenseFormSubmit()
                                         closeModal('expense')
