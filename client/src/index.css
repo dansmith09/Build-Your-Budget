@@ -512,5 +512,11 @@ input{
   .active-navTab {
     padding: 10px;
   }
+  .tech-container {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+  .homepage-illustration {
+    height: 450px;
+  }
 }
 
