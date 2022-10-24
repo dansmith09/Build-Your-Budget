@@ -34,7 +34,6 @@ export default function Donate() {
                 <div>
                     <p className='donate-header-content'>Want a 10% discount? Donate via crypto!</p>
                 </div>
-                
             </div>
             <div className='donate-button-container'>
                 <button
