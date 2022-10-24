@@ -39,6 +39,7 @@ function Login(props) {
           <div className="form-group">
             <label className='input-field' htmlFor="email"></label>
             <input
+              className='form-input'
               placeholder="email"
               name="email"
               type="email"
@@ -49,6 +50,7 @@ function Login(props) {
             <div className="form-group">
               <label className='input-field' htmlFor="pwd"></label>
               <input
+                className='form-input'
                 placeholder="password"
                 name="password"
                 type="password"
@@ -62,7 +64,9 @@ function Login(props) {
             </div>
           ) : null}
             <div className="form-button">
-              <button className='login-button' type="submit">Login</button>
+              <button 
+              className='signupBtn' 
+              type="submit">Login</button>
             </div>
         </form>
       </div>
