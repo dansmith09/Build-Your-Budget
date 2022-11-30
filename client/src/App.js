@@ -15,6 +15,7 @@ import Donate from './components/pages/Donate';
 import Login from './components/pages/Login';
 import Signup from './components/pages/Signup';
 import Thankyou from './components/pages/Thankyou';
+import Footer from './components/Footer';
 
 const httpLink = createHttpLink({
     uri: '/graphql',
@@ -53,6 +54,7 @@ function App() {
                         <Route path="/signup" element={<Signup />}/>
                         <Route path="/thankyou" element={<Thankyou />}/>
                     </Routes>
+                    <Footer />
                 </div>
             </Router>
         </ApolloProvider>
