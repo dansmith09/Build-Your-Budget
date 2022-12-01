@@ -126,8 +126,6 @@ export default function Home(){
                             <SiHeroku className='tech-icon' />
                         </div>
                     </div>
-                    
-
                 </div>
             </section>
             <Footer />
