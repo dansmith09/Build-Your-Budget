@@ -54,7 +54,6 @@ function App() {
                         <Route path="/signup" element={<Signup />}/>
                         <Route path="/thankyou" element={<Thankyou />}/>
                     </Routes>
-                    <Footer />
                 </div>
             </Router>
         </ApolloProvider>

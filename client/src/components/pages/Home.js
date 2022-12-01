@@ -10,6 +10,8 @@ import { SiChartdotjs } from 'react-icons/si';
 import { GrGraphQl } from 'react-icons/gr';
 import { SiHeroku } from 'react-icons/si';
 
+import Footer from '../Footer';
+
 export default function Home(){
     return (
         <section>
@@ -128,6 +130,7 @@ export default function Home(){
 
                 </div>
             </section>
+            <Footer />
         </section>
         
     )
