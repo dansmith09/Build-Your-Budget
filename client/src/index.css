@@ -513,6 +513,15 @@ input{
   justify-content: center;
   margin-bottom: 20px;
 }
+.footer-info-returns {
+  padding: 10px;
+}
+.footer-info-terms {
+  padding: 10px;
+}
+.footer-info-contact {
+  padding: 10px;
+}
 
 .footer-social-media-icon {
   margin: 0px 4px;
@@ -531,22 +540,23 @@ input{
   margin-bottom: 10px;
   width: 30%;
   font-size: 13px;
+  /* padding-bottom: 50px */
 }
 
-.footer-info-name, .footer-info-email, .footer-info-number {
+.footer-info-name, .footer-info-general, .footer-info-number {
   margin-bottom: 10px;
 }
 
 .footer-info-name, .footer-info-returns {
-  text-align: start;
+  text-align: center;
 }
 
-.footer-info-email, .footer-info-terms {
+.footer-info-general, .footer-info-terms {
   text-align: center;
 }
 
 .footer-info-number, .footer-info-contact {
-  text-align: end;
+  text-align: center;
 }
 
 .footer-date {
@@ -559,9 +569,10 @@ input{
   flex-grow: 1;
   border: none;
   height: 1px;
-  background-color: var(--main-color);
-  margin-top: 50px;
-  margin-bottom: 50px;
+  background-color: var(--main-text);
+  opacity: 75%;
+  margin-top: 25px;
+  margin-bottom: 25px;
   width: 100%;
 }
 
@@ -575,7 +586,7 @@ input{
   font-size: large;
   margin: 0px 20px;
 }
-.footer-info-number, .footer-info-name, .footer-info-email {
+.footer-info-number, .footer-info-name, .footer-info-general {
   font-size: 20px;
   color: var(--main-text);
   opacity: 75%;

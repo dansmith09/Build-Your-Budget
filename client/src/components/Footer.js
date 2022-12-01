@@ -12,19 +12,21 @@ const Footer = () => {
                     </section>
                     <section className='footer-info-returns'> 
                         Blog
-                        <br />
-                        Community
+                        <section className='footer-info-returns'>
+                            Community
+                        </section>
                     </section>
                 </section>
                 {/* Center */}
                 <section className='footer-info-center'>
-                    <section className='footer-info-email'>
+                    <section className='footer-info-general'>
                         General
                     </section>
                     <section className='footer-info-terms'>
                         About
-                        <br />
-                        Team
+                        <section className='footer-info-terms'>
+                            Team
+                        </section>
                     </section>
                 </section>
                 {/* Right */}
@@ -34,10 +36,10 @@ const Footer = () => {
                     </section>
                     <section className='footer-info-contact'>
                         FAQ
-                        <br />
-                        Contact Us
+                        <section className='footer-info-contact'>
+                            Contact Us
+                        </section>
                     </section>
-
                 </section>
             </section>
             {/* <hr className='footer-seperator' /> */}
