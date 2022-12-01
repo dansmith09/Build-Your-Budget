@@ -3,6 +3,8 @@ import Auth from '../utils/auth';
 // In order to use conditional styling (active/hover), we need to use NavLink. ( React Router v4)
 import { NavLink as Link } from 'react-router-dom'
 
+// Pages and routes for blog, about, team have not been created yet.
+
 
 
 function NavTabs() {
@@ -16,6 +18,27 @@ function NavTabs() {
                         className={({ isActive }) => (isActive ? 'active-navTab' : 'navTab')}
                         to="/home">
                             home
+                        </Link>
+                    </li>
+                    <li className='navbar-items'>
+                        <Link
+                        className={({ isActive }) => (isActive ? 'active-navTab' : 'navTab')}
+                        to="/blog">
+                            blog
+                        </Link>
+                    </li>
+                    <li className='navbar-items'>
+                        <Link
+                        className={({ isActive }) => (isActive ? 'active-navTab' : 'navTab')}
+                        to="/about">
+                            about
+                        </Link>
+                    </li>
+                    <li className='navbar-items'>
+                        <Link
+                        className={({ isActive }) => (isActive ? 'active-navTab' : 'navTab')}
+                        to="/team">
+                            team
                         </Link>
                     </li>
                     <li className='navbar-items'>
@@ -47,6 +70,27 @@ function NavTabs() {
                         className={({ isActive }) => (isActive ? 'active-navTab' : 'navTab')}
                         to="/home">
                             home
+                        </Link>
+                    </li>
+                    <li className='navbar-items'>
+                        <Link
+                        className={({ isActive }) => (isActive ? 'active-navTab' : 'navTab')}
+                        to="/blog">
+                            blog
+                        </Link>
+                    </li>
+                    <li className='navbar-items'>
+                        <Link
+                        className={({ isActive }) => (isActive ? 'active-navTab' : 'navTab')}
+                        to="/about">
+                            about
+                        </Link>
+                    </li>
+                    <li className='navbar-items'>
+                        <Link
+                        className={({ isActive }) => (isActive ? 'active-navTab' : 'navTab')}
+                        to="/team">
+                            team
                         </Link>
                     </li>
                     <li className="navbar-items">
